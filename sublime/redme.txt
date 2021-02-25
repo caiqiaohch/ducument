@@ -1,0 +1,216 @@
+安装插件时，弹出提示框：
+Package Control
+Unable to download XXX. Please view the console for more details. 一番搜索后在github上找到答案：
+解决方法：在这里插入图片描述
+1.打开Sublime Text，Preferences ->Package Settings->Package Control->Settings-User,在文件中添加以下几行代码：
+
+"downloader_precedence":    
+    {
+    	"linux": [ "curl", "urllib",    "wget" ],
+    	"osx": [ "curl", "urllib" ],
+    	"windows": [ "wininet" ]
+    },
+
+
+import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+
+2.重启Sublime Text，问题解决。
+
+
+建议必备
+Emmet
+
+编码快捷键，前端必备神器
+
+HTML-CSS-JS Prettify
+
+一键格式化HTML，CSS，Javascript代码
+
+SublimeLinter
+
+语法检测支持JavaScript、CSS、HTML、Java、PHP、Python、Ruby等十多种开发语言
+
+Babel
+
+把ES6语法编译成ES5语法
+
+Java​Script​Next - ES6 Syntax
+
+支持ES6语法
+
+Sidebar Enhancements
+
+侧栏以及右键菜单增强插件
+设置快捷键打开浏览器
+
+SyncedSidebarBg
+
+自动同步侧边栏底色为编辑窗口底色
+
+SublimeServer
+
+本地服务器
+
+BracketHighlighter
+
+高亮显示，便于查看起始和结束标记
+
+IMESupport
+
+输入法跟随显示，中文光标追随
+
+AutoFileName
+
+快速列出引用文件夹下文件目录
+
+TrailingSpaces
+
+多余空格提示
+
+sublimeCodeIntel
+
+JS智能提示
+
+ESLint
+
+JS语法检测
+
+jQuery
+
+jq函数提示
+
+All Autocomplete
+
+搜索所有打开的文件来寻找匹配的提示词
+
+ctags
+
+函数定位
+
+SublimeGit
+
+git工具
+
+
+
+建议可选
+
+CSS Format
+
+可以将任意的 CSS、SASS、SCSS、LESS 代码格式化为展开、紧凑、压缩的形式
+
+ColorPicker
+
+调色板（需要输入颜色时，可直接选取颜色）
+
+Alignment
+
+代码对齐，选中要调整的行，然后按 Ctrl+ Alt + A
+
+Autoprefixer
+
+CSS3私有前缀自动补全插件
+
+JSFormat
+
+Javascript的代码格式化插件，支持压缩、去空格、多列形式
+
+CssComb
+
+为CSS属性进行排序
+
+DocBlockr
+
+输入/*或/**然后按tab或回车生成优美注释
+
+ChineseLocalizations
+
+语言插件，点击help->language->相应语言版本
+
+html5
+
+支持hmtl5规范的插件包，与Emmet插件配合使用，效果更好
+
+javascript-API-Completions
+
+支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性提示的插件
+
+SublimeREPL
+
+允许在 Sublime Text 中运行各种语言（NodeJS ， Python，Ruby， Scala 和 Haskell 等等）
+
+Trimmer
+
+自动删除不必要的空格
+
+canIUse
+
+检查浏览器是否支持代码中的CSS和HTML元素，所有您需要做的就是选择有疑问的元素，插件将为你做其余的事情。
+
+Clickable URLs
+
+强调代码中的 url，并允许用按键( 默认情况下为 Cmd+Option+Enter ) 打开它们。
+
+Color Highlighter
+
+选中颜色值背景会高亮
+
+CSS Comments
+
+css丰富的注释功能
+
+CSS3
+
+css3语法提示
+
+JavaScript Completions
+
+javascript语法提示
+
+Themr
+
+可以管理所有的风格样式
+
+Pretty JSON
+
+格式化json文件，可解析Unicode编码汉字，快捷键 Ctrl+Alt+J
+
+PackageResourceViewer
+
+可查看和修改插件源码
+
+Keymaps
+
+快速查找所有插件的快捷键
+
+LiveStyle
+
+结合浏览器EmmetLiveStyle插件可视化编辑css
+
+
+三、Sublime3插件配置
+1.直接安装
+
+安装Sublime text 3插件很方便，可以直接下载安装包解压缩到Packages目录（菜单->preferences->　　Browse Packages）。
+2.使用Package Control组件安装
+
+也可以安装package control组件，然后直接在线安装：
+
+按Ctrl+ `(此符号为tab按键上面的按键) 调出console（注：避免热键冲突）
+粘贴以下代码到命令行并回车：
+
+import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+
+如图，上面的代码复制到红线地方，按回车键，会看到下面出现东西在左右摆动，说明正在下载。
+这里写图片描述
+3. 下载完成之后重启Sublime Text 3。
+4. 如果在Perferences->中看到package control这一项，则安装成功。
+
+这里写图片描述
+5.用Package Control安装插件的方法：
+
+按下Ctrl+Shift+P调出命令面板
+输入install 调出 Install Package 选项并回车，然后在列表中选中要安装的插件。
+方法介绍完了，接下来进入今天正题，一些有用的Sublime Text 3插件：
+
+注意：安装插件时保持网络畅通，避免插件由于网络原因奔溃

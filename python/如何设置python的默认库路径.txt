@@ -1,0 +1,63 @@
+如何设置python的默认库路径
+我正在使用Centos 7.2 64位。 Python的默认版本是2.7.5。我安装了一个2.7.13的anaconda版本。 python的默认解释器设置为2.7.13，因为我将012aanaconda的路径添加到PATH变量。然而，当我安装了opencv，我做cmake时得到这个警告消息：如何设置python的默认库路径
+
+Could NOT find PythonLibs: Found unsuitable version "2.7.5", but required is exact version "2.7.13" (found /lib64/libpython2.7.so) 
+看来Python库的默认路径为/lib64/libpython2.7.so。我搜索的解决方案，它说如果我设置环境变量PYTHON_LIBRARY，这将得到解决。所以我把它加入如下：
+
+export PYTHON_LIBRARY=/ghome/mypath/anaconda2/lib/libpython2.7.so 
+我重新登录。问题仍然存在。 我cmake命令如下：
+
+cmake -D BUILD_opencv_gpu=OFF -D WITH_CUDA=OFF -D WITH_1394=OFF -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/ghome/mypath/software/try_opencv/installed .. 
+我一直停留在这个问题上几个小时。 谢谢大家的帮助！
+
+来源
+
+2017-03-02 pfc
++0
+将2.7.13 python exec路径添加到路径变量末尾。它将覆盖 – rakesh
+
++0
+之前定义的其他人已经将PATH变量中的anaconda python的bin路径添加到PATH变量中。这成功了，所以python的默认解释器是python 2.7.13。但是，问题是Python的默认库仍然是Python 2.7.5。我希望知道如何将默认库更改为Python 2.7.13。谢谢。 – pfc
+
+A
+回答
+1
+从documentation为CMake的模块FindPythonLibs：
+
+如果你想指定的Python的安装使用，您应该修改以下缓存变量：
+
+PYTHON_LIBRARY - 路径到Python库
+PYTHON_INCLUDE_DIR - 路径到Python.h发现
+由于版本从patchlevel.h头文件提取（这是常见的做法Find CMake的模块），你需要同时指定库，包括目录：
+
+cmake -DPYTHON_LIBRARY=/ghome/mypath/anaconda2/lib/libpython2.7.so -DPYTHON_INCLUDE_DIR=<...> <other-cmake-arguments> 
+来源
+
+2017-03-02 07:32:06 Tsyvarev
+
+ 
+0
+你还可以补充这条道路在运行时PYTHONPATH环境变量，除了：
+
+import sys 
+sys.path.append('/home/user/python-libs') 
+你没有提到的操作系统，如果它的Linux那么你可以尝试搜索sys.path中列出的目录。
+
+import sys 
+print '\n'.join(sys.path) 
+因此，Python会找到已安装到这些位置的任何软件包。 使用当前工作目录填充sys.path，然后填入PYTHONPATH环境变量中列出的目录，然后是由站点模块控制的与安装相关的默认路径。 假设您的PYTHONPATH环境变量未设置，sys.path将由当前工作目录加上站点模块对其进行的任何操作组成。
+
+来源
+
+2017-03-02 07:39:50
+
+-1
+我想我已经解决了这个问题。我在我的.bashrc文件中添加了以下句子，它可以工作。
+
+export PYTHON_LIBRARY=/ghome/mypath/anaconda2/lib/libpython2.7.so 
+export PYTHON_INCLUDE_DIR=/ghome/mypath/anaconda2/include:/ghome/mypath/anaconda2/include/python2.7 
+来源
+
+2017-03-02 08:30:18 pfc
++0
+不要将此添加到.bashrc中，请使用-DPYTHON_LIBRARY = 并将其添加到您的CMake调用中。 – usr1234567
