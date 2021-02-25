@@ -1,0 +1,26 @@
+
+Sublime Text 3修改插件安装位置
+plikefly 2017-08-03 00:06:30 4921 收藏
+展开
+
+Sublime text 我已经用了好久了，最近想当然的把目录打了个包，传到离线环境使用，想着插件什么的都能使用。结果发现，咦，插件呢？
+
+在网上搜索了半天，终于找到答案：
+
+方法1：
+
+windows安装版，默认将插件放在“C:\Users\用户名\AppData\Roaming\Sublime Text 3\Packages”了，和安装目录半毛钱关系没有。
+
+不要使用windows的安装版，使用portable吧，这样就可以拷贝来拷贝去了。
+
+方法2：
+
+在安装目录下新建个“Data”目录（如安装目录“D:\Program Files\Sublime Text 3\”下），重启Sublime，Browser Packages就直接打开这里了。
+
+这时候，需要重亲安装“Package Control”，装完后，貌似插件会自动装好的。
+
+明显方法2更适合我，又可以拷来拷去了。
+
+参考：
+
+http://www.mamicode.com/info-detail-1471670.html

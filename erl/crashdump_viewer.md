@@ -1,0 +1,1 @@
+crashdump_viewer:start().

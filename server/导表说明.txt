@@ -1,0 +1,7 @@
+1.F:\sntf\策划 
+	运行buildCache.bat
+	
+2.F:\sntf\策划\导出目录\develop\server
+	生成文件
+	
+3.运行node /mnt/hgfs/code/server/build_tools/compileTable.js design /mnt/hgfs/sntf /策划/猛将数值表 /mnt/hgfs/sntf/design /策划/导出目录/develop/server
