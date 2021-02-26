@@ -5,3 +5,43 @@ let full = ['questVoyage', 'questRoutine', 'expeditionAchievement']
 node /opt/deploy/home/gitlab-runner/sntf/server/compiler/build_tools/compileTable.js design /opt/deploy/home/gitlab-runner/sntf/svn_repos/design/trunk /策划/猛将数值表 /opt/deploy/home/gitlab-runner/sntf/server/design /策划/导出目录/develop/server
 
 
+
+代码checkout
+1、将ssh可以放到gitlab上面
+2、执行下面命令
+git clone --recursive git@gitlab.3kgotham.com:game/sntf/server.git
+3、代码使用develop分支
+git checkout develop
+4、config使用develop分支
+cd config && git checkout develop
+5、resource使用design分支
+cd resource && git checkout design
+6、安装redis与mongodb
+7、设置config/config.js的数据库配置
+8、设置master.json
+9、安装nodejs
+10、执行 node app.js启动服务器
+
+redis 5.0
+mongodb 4.0
+
+http://dl.mongodb.org/dl/win32/x86_64
+
+tortoisegit
+
+mongodb安装
+https://www.runoob.com/mongodb/mongodb-window-install.html
+
+
+Redis目录
+C:\Program Files\Redis
+
+打开一个 cmd 窗口 使用 cd 命令切换目录到 C:\redis 运行：
+redis-server.exe redis.windows.conf
+
+mongodb
+F:\dyh\mongodb\bin
+
+
+mongod --dbpath F:\dyh\mongodb\data
+
