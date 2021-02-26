@@ -1,0 +1,7 @@
+1.任务系统是否导全表数据
+let full = ['questVoyage', 'questRoutine', 'expeditionAchievement']
+
+2导表指令
+node /opt/deploy/home/gitlab-runner/sntf/server/compiler/build_tools/compileTable.js design /opt/deploy/home/gitlab-runner/sntf/svn_repos/design/trunk /策划/猛将数值表 /opt/deploy/home/gitlab-runner/sntf/server/design /策划/导出目录/develop/server
+
+
