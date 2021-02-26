@@ -1,0 +1,74 @@
+centOS下安装python3 和 pip: command not found
+
+
+在更新python3的时候会自动安装pip3，但是安装完成后，pip -V发现出错：command not found，找了好久，发现在建立软连接的时候路径写错了。
+
+总结一下安装python3和发现pip:command not found 之后的思路。
+
+centOS安装python3
+
+
+准备编译环境
+yum groupinstall 'Development Tools' 
+
+yum install zlib-devel bzip2-devel openssl-devel ncurese-devel 
+
+2. 下载python3.5包
+
+wget http://www.python.org/ftp/python/3.6.5/Python-3.6.5.tar.xz
+
+3. 解压，编译
+
+tar Jxvf Python-3.6.5.tar.xz
+
+cd Python-3.6.5
+
+./configure --prefix=/usr/local/python3 
+
+make && make install 
+
+这里注意这个 –prefix选项，将python3安装在/usr/local/python3目录下，而之前下载的压缩包和安装包就都可以直接删除了。 
+
+4. 更换系统默认的python和pip版本 
+
+备份系统旧的python版本
+
+mv /usr/bin/python /usr/bin/python2.6
+
+建立指向新python3和pip3的软链接
+
+ln -s /usr/local/python3/bin/python3.6 /usr/bin/python 
+
+ln -s /usr/local/python3/bin/pip3 /usr/bin/pip 
+
+之前出错就是把pip的软链接路径写错导致找不到pip3
+
+检查python和pip版本 
+
+python -V 
+
+pip -V 
+
+5. 更新yum相关设置 
+
+因yum依赖python2，故修改文件
+
+vim /usr/bin/yum 
+
+将第一行改为
+
+#!/usr/bin/python2.6
+
+pip: command not found
+
+参考链接  (https://www.quora.com/How-to-fix-%E2%80%9Cpip-command-not-found%E2%80%9D)
+
+出现这个的原因一般有两个： 
+
+1. 未安装pip 
+
+2. pip安装了，但是没有配置$PATH环境变量
+
+如果是第二个原因，此时echo $PATH 查看pip的安装目录是否在PATH中，如果没有，在~/.bash_profile中添加export PATH=$PATH:/usr/local/bin（假设pip的安装目录为/usr/local/bin）然后source ~/.bash_profile使之生效。
+
+我之前其实已经配置$PATH，并且没有将系统的pip可执行路径指向了pip3的安装目录，但是在ln -s 的时候写错了pip3的路径，所以肯定找不到。愚蠢的错误。
