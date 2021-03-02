@@ -10,3 +10,15 @@ git checkout master 
 git pull 
 git checkout dev
 git merge master
+
+
+
+Git更新本地冲突：commit your changes or stash them before you can merge。。。
+方法一：stash
+git stash
+git pull
+git stash pop
+
+方法二：直接完全覆盖本地修改
+git reset --hard
+git pull
