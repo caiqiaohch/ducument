@@ -101,3 +101,24 @@ redis 127.0.0.1:6379> slowlog get 2 #打印两条慢查询日志
 redis 127.0.0.1:6379> slowlog reset #清空慢查询日志信息
 
 这样基本上就安装完成了
+
+
+linux 安装Redis6.0.5时
+进行到./install_server.sh时报错，
+
+This systems seems to use systemd.
+Please take a look at the provided example service unit files in this directory, and adapt and install them. Sorry!
+解决方案：
+
+vi ./install_server.sh
+注释下面的代码即可
+
+#bail if this system is managed by systemd
+#_pid_1_exe="$(readlink -f /proc/1/exe)"
+#if [ "${_pid_1_exe##*/}" = systemd ]
+#then
+#       echo "This systems seems to use systemd."
+#       echo "Please take a look at the provided example service unit files in this directory, and adapt and install them. Sorry!"
+#       exit 1
+#fi
+然后重新运行 ./install_server.sh即可。
