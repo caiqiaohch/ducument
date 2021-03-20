@@ -16,23 +16,15 @@ MongoDB 将数据存储为一个文档，数据结构由键值(key=>value)对组
 
 # wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.6.17.tgz
 
-
-
 解压该压缩包，把数据提取到/opt/目录下。
 
 # sudo tar -zvxf mongodb-linux-x86_64-rhel70-4.4.4.tgz -C /home/haoyou
-
-
 
 下面为了升级的方便，对该目录创建一个软连接。
 
 # sudo ln -s /opt/mongodb-linux-x86_64-rhel70-3.6.17 /opt/mongodb
 
-
-
 下面进入到mongodb目录下，创建一个data目录。
-
-
 
 二，创建环境变量
 
@@ -44,14 +36,9 @@ MongoDB 将数据存储为一个文档，数据结构由键值(key=>value)对组
 
 export PATH=/home/haoyou/mongodb/bin:$PATH
 
-
-
 接着执行以下命令让其配置生效。
 
 # source ~/.bashrc
-
-
-
 三，创建启动服务
 
 使用下面的命令创建脚本文件。
@@ -70,9 +57,9 @@ $ sudo vi /etc/init.d/mongod
  
 . /etc/rc.d/init.d/functions
  
-MONGOHOME="/home/ec2-user/mongodb" 
+MONGOHOME="/home/haoyou/mongodb" 
 CONFIGFILE="/etc/mongod.conf" 
-DBPATH="/home/ec2-user/<data-path>" 
+DBPATH="/home/haoyou/mongodb/data" 
 COMMAND="$MONGOHOME/bin/mongod" 
 OPT="--config $CONFIGFILE " 
 mongod=${MONGOD-$COMMAND}
@@ -235,3 +222,6 @@ $ service mongod start
 
 1
 > version()
+
+
+mongod --config /home/haoyou/mongodb/mongodb.conf
