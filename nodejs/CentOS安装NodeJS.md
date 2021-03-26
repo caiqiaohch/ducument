@@ -29,6 +29,11 @@ tar -xf node-v9.3.0-linux-x64.tar
 
 ln -s ~/node-v9.3.0-linux-x64/bin/node /usr/bin/node
 ln -s ~/node-v9.3.0-linux-x64/bin/npm /usr/bin/npm
+
+ln -s /home/haoyou/sourse/node-v14.16.0-linux-x64/bin/node /usr/local/bin/node
+ln -s /home/haoyou/sourse/node-v14.16.0-linux-x64/bin/npm /usr/local/bin/npm
+
+ln -s  redis-* -> /home/haoyou/sourse/redis/bin/redis-*
 注意ln指令用于创建关联（类似与Windows的快捷方式）必须给全路径，否则可能关联错误。
 
 5.测试
