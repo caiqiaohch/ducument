@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+		"incremental": true,                   /* 增量编译 提高编译速度*/
+        "module": "commonjs",				/* 编译目标模块系统*/
+        "target": "es6",							/* 编译目标ES版本*/
+        "lib":[											/* 编译过程中需要引入的库文件列表*/
+          "es2015",
+          "es2015.promise",
+          "es2016",
+          "es2017.object"
+        ],
+		//"strict": true,                           /* 严格模式开关 等价于noImplicitAny、strictNullChecks、strictFunctionTypes、strictBindCallApply等设置true */
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "typeRoots": [							/* 要包含的类型声明文件路径列表*/
+            "./src/@types",
+            "./node_modules/@types/"
+        ],
+        "rootDir":"./src",
+        "outDir":"./",
+        "watch":false
+    },
+    "include":[
+        "./src/**/*"
+    ],
+    "exclude": [
+        "./src/module/danyao_diguo/*",
+        "*.tsx",
+        "./src/**/*.test.ts"
+    ]
+}
