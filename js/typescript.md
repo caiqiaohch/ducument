@@ -279,8 +279,7 @@ Child_interface_name extends super_interface1_name, super_interface2_name,…,su
 TypeScript
 class Car { 
    // 字段
-   engine:string; 
-   
+   engine:string;    
    // 构造函数
    constructor(engine:string) { 
       this.engine = engine 
