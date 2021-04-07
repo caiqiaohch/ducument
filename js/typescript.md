@@ -284,8 +284,7 @@ class Car {
    // 构造函数
    constructor(engine:string) { 
       this.engine = engine 
-   }  
-   
+   }    
    // 方法
    disp():void { 
       console.log("函数中显示发动机型号  :   "+this.engine) 
