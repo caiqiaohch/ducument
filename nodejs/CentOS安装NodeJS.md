@@ -41,7 +41,6 @@ ln -s  redis-* -> /home/haoyou/sourse/redis/bin/redis-*
 node -v
 npm
 如果正确输出版本号，则部署OK
-
 这种安装的方法好处是比较干净，安装也比较快速。个人认为比较适合新手。但是如果遇到nodejs插件全局安装时，需要自行去创建关联，参考第4步。
 
 安装方法2——编译部署
