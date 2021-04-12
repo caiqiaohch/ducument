@@ -1,6 +1,6 @@
 typescript
 https://www.runoob.com/typescript/ts-operators.html
-
+## 变量
 const getValue = () => {
   return 0
 }
@@ -30,7 +30,7 @@ let result1 = buildName("Bob");  // 正确
 let result2 = buildName("Bob", "Adams", "Sr.");  // 错误，参数太多了
 let result3 = buildName("Bob", "Adams");  // 正确
 
-可选属性
+## 可选属性
 接口里的属性不全都是必需的。 
 有些是只在某些条件下存在，或者根本不存在。 例如给函数传入的参数对象中只有部分属性赋值了。
 带有可选属性的接口与普通的接口定义差不多，只是在可选属性名字定义的后面加一个?符号。如下所示：
@@ -64,7 +64,7 @@ function addNumbers(...nums:number[]) {
  addNumbers(1,2,3) 
  addNumbers(10,10,10,10,10)
  
- 匿名函数自调用
+## 匿名函数自调用
 匿名函数自调用在函数后使用 () 即可： 
 TypeScript
 (function () { 
@@ -78,7 +78,7 @@ JavaScript
     console.log(x)    
 })()
 
-构造函数
+## 构造函数
 TypeScript 也支持使用 JavaScript 内置的构造函数 Function() 来定义函数：
 语法格式如下：
 var res = new Function ([arg1[, arg2[, ...argN]],] functionBody)
@@ -96,7 +96,7 @@ var myFunction = new Function("a", "b", "return a * b");
 var x = myFunction(4, 3); 
 console.log(x);
 
-Lambda 函数
+## Lambda 函数
 Lambda 函数也称之为箭头函数。
 箭头函数表达式的语法比函数表达式更短。
 函数只有一行语句：
@@ -213,7 +213,7 @@ disp("Runoob")
 console.log("输出数组....") 
 disp(["Runoob","Google","Taobao","Facebook"])
 
-TypeScript 接口
+## TypeScript 接口
 接口是一系列抽象方法的声明，是一些方法特征的集合，这些方法都应该是抽象的，需要由具体的类去实现，然后第三方就可以通过这组抽象方法调用，让具体的类执行具体的方法。
 TypeScript 接口定义如下：
 interface interface_name { 
@@ -249,7 +249,7 @@ console.log("Employee  对象 ")
 console.log(employee.firstName) 
 console.log(employee.lastName)
 
-接口和数组
+## 接口和数组
 接口中我们可以将数组的索引值和元素设置为不同类型，索引值可以是数字或字符串。
 TypeScript
 interface namelist { 
@@ -265,7 +265,7 @@ var agelist:ages;
 agelist["John"] = 15   // 正确 
 agelist[2] = "nine"   // 错误
 
-接口继承
+## 接口继承
 接口继承就是说接口可以通过其他接口来扩展自己。
 Typescript 允许接口继承多个接口。
 继承使用关键字 extends。
@@ -274,7 +274,7 @@ Child_interface_name extends super_interface_name
 多接口继承语法格式：
 Child_interface_name extends super_interface1_name, super_interface2_name,…,super_interfaceN_name
 
-完整实例
+## 完整实例
 以下实例创建来一个 Car 类，然后通过关键字 new 来创建一个对象并访问属性和方法：
 TypeScript
 class Car { 
@@ -325,7 +325,7 @@ var obj = new Person()
 var isPerson = obj instanceof Person; 
 console.log("obj 对象是 Person 类实例化来的吗？ " + isPerson);
 
-类和接口
+## 类和接口
 类可以实现接口，使用关键字 implements，并将 interest 字段作为类的属性使用。
 以下实例红 AgriLoan 类实现了 ILoan 接口：
 TypeScript
@@ -407,3 +407,5 @@ drawAllShapes(new circle.Circle());
 drawAllShapes(new triangle.Triangle());
 使用 tsc 命令编译以上代码（AMD）：
 tsc --module amd TestShape.ts 
+
+
