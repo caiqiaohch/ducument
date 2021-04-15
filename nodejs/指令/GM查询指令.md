@@ -20,6 +20,8 @@ const State = {
 }
 network.request("game.handler.rbcQueryCity", {type: "serverState", lb: "rbcPlayer"}, noop);
 
+network.request("game.handler.rbcQueryCity",  {type: "leaderboard", lb: "rbcScorePower"}, noop);
+
 # 百美人
 
 ## 获得跨服排行榜
