@@ -230,3 +230,8 @@ cd ~/.vim/plugin/YouCompleteMe
 Shell
 vim demo.cpp
 vim demo.cpp
+
+set mouse=a
+:NERDTree
+
+git config --global core.editor vim
