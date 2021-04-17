@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-		"incremental": true,                   /* 增量编译 提高编译速度*/
+		//"incremental": true,                   /* 增量编译 提高编译速度*/
         "module": "commonjs",				/* 编译目标模块系统*/
         "target": "es6",							/* 编译目标ES版本*/
         "lib":[											/* 编译过程中需要引入的库文件列表*/
