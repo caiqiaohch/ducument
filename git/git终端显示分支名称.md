@@ -21,6 +21,38 @@ function git_branch {
 }
  
 export PS1='\u@\h \[\033[01;36m\]\W\[\033[01;32m\]$(git_branch)\[\033[00m\] \$ '
+
+
+刚安装centos，命令提示符不显示当前完整目录，如下所示：
+
+[centos@s101 ~]$
+
+ 
+
+配置方法：
+
+1.编辑profile文件，添加环境变量PS1
+
+ su root  //切换到root用户
+
+ vim /etc/profile  //打开profile文件
+
+在profile内容最下面添加如下内容：
+
+export PS1='[\u@\h `pwd`]\$'
+
+ 
+
+2.保存退出，使profile修改生效
+
+source /etc/profile
+
+ 
+
+3.查看命令提示符效果
+
+[root@s101 /home/centos]
+
  
 
 对于PS1的参数可以参考下面来写：

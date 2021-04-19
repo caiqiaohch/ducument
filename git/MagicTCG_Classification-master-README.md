@@ -38,3 +38,6 @@ Cards are in JSON format
 
 
 Humans can very easily sort cards by color without knowing what color they are, each color has its own strategies and tropes.  Lets see how well a computer can classify them.  
+
+
+
