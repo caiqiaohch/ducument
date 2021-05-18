@@ -63,8 +63,6 @@ which redis找不能服
 加入一个软件链接
 ln -s /usr/local/redis/bin/redis-* /usr/local/bin/ 
 
- 
-
 service redis_6379 start  启动
 
 ps -ef | grep redis 
