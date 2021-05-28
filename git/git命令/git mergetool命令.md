@@ -31,3 +31,4 @@ merge使用方法
 git mergetool//原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：https://www.yiibai.com/git/git_mergetool.html
 
 
+git log --all --decorate --oneline --graph

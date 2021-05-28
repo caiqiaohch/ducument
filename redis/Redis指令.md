@@ -464,6 +464,14 @@ key 所储存的值减去给定的减量值（decrement）
  
 5.select index 
 切换到指定的数据库
+
+6.SELECT index
+切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值。
+默认使用 0 号数据库。
+可用版本： >= 1.0.0
+时间复杂度： O(1)
+返回值： OK
+
 11.服务器命令
 1.bgrewriteaof 
 异步执行一个 aof（appendonly file） 文件重写操作
