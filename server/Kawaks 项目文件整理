@@ -1,0 +1,33 @@
+Kawaks 项目文件整理
+
+Kawaks 项目文件整理
+这两天一直在使用kawaks项目，今天对其项目文件整理一下；包括文件，补充素材以及roms；相关材料已经放在github上了，方便下次下载；
+
+kawaks 项目主页：http://kawaks.retrogames.com/
+
+winkawaks 项目主页：https://www.winkawaks.org/index.htm
+
+游戏 rom 列表：https://www.winkawaks.org/roms/full-rom-list.htm
+
+项目简介：
+
+复制代码
+Kawaks, The BEST arcade game emulator for Capcom and NeoGeo games. 
+Kawaks has been one of the emulators of choice for newer games such as Metal Slug 3. 
+This emulator supports both Neo-Geo and Capcom (CPS1/2) games. 
+This can probably be considered the ePSXe of arcade emus; 
+some configurating must be done prior to actual gaming, but once that's out of the way, the playing can begin!
+Among Kawaks' primary features is netplay, something that makes gaming so enjoyable.
+Do you feel a need to find a guy to terrorize aliens? Hop on to a server and blast away! Want to have a one-on-one with a friend in Marvel vs. Capcom? Netplay is your answer.
+复制代码
+
+
+项目地址：https://github.com/Game-Emulators/Kawaks-Project
+
+街机服务器项目：https://github.com/yaowenxu/Projects/tree/master/Kaillera-Game-Server
+
+保持更新；
+
+ 
+https://github.com/yaowenxu
+分类: 模拟器, Windows
