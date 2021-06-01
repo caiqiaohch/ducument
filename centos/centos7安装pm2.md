@@ -37,44 +37,29 @@ yum -y install gcc gcc-c++
 下载高版本的node安装包
 
 wget https://npm.taobao.org/mirrors/node/v10.14.1/node-v10.14.1-linux-x64.tar.gz
-1
+
 解压到相应的目录
-
 tar -xf node-v10.14.1-linux-x64.tar.gz
-1
+
 重命名
-
 mv node-v10.14.1-linux-x64 node
-1
-添加环境变量（根据自己的路径添加）
 
+添加环境变量（根据自己的路径添加）
 vim /etc/profile
 export NODE_HOME=/myinstall/npm/node
 export PATH=$NODE_HOME/bin:$PATH
-1
-2
-3
-重新加载环境
 
+重新加载环境
 source /etc/profile
-1
+
 查看相应版本
 
 
 安装pm2
 npm  install pm2 -g
-1
+
 检测
-
 pm2  list
-1
-
-
-常用命令
-
-
-
-
 
 
 ————————————————

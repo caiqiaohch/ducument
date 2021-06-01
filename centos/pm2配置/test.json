@@ -1,0 +1,43 @@
+{
+  "apps" : [{
+			"name"        : "userInfoApp-10003",  // 应用名称
+			"script"      : "userInfoApp.js",    // 实际启动脚本
+			"args"		:[
+			10003
+			],
+			"log_date_format"  : "YYYY-MM-DD HH:mm Z",
+			"ignoreWatch" : ["[\\/\\\\]\\./", "node_modules"],
+			"watch"       : true,
+			"node_args"   : "--harmony",
+			"cwd"         : "./",  // 当前工作路径
+			"env": {
+			"NODE_ENV": "production",
+			"AWESOME_SERVICE_API_TOKEN": "xxx"
+			}
+  },{
+		  "name"        : "fileHttpSrv-8901",  // 应用名称
+		  "script"      : "fileHttpSrv.js",  // 实际启动脚本
+		  "cwd"         : "./",  // 当前工作路径
+		   "args"		:[
+				8901
+		   ],
+		  "watch": [  // 监控变化的目录，一旦变化，自动重启
+			"bin",
+			"routers"
+		  ],
+		  "ignore_watch" : [  // 从监控目录中排除
+			"node_modules", 
+			"logs",
+			"public"
+		  ],
+		  "watch_options": {
+			"followSymlinks": false
+		  },
+		  "exec_mode"        : "fork",
+		  "error_file" : "./log/app-err.log",  // 错误日志路径
+		  "out_file"   : "./log/app-out.log",  // 普通日志路径
+		  "env": {
+			  "NODE_ENV": "production"  // 环境参数，当前指定为生产环境
+		  }
+  }]
+}

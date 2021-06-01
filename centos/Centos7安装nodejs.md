@@ -66,7 +66,7 @@ pm2: /usr/local/node/bin/pm2
 4.2.3
  
 
-----------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 扩展：
 node-v10.19.0-linux-x64.tar.gz 也可以 不通过 vim /etc/profile 的方式配置node环境变量，通过软链接的方式：
@@ -84,8 +84,6 @@ ln -s /usr/local/node-v10.16.3-linux-x64/bin/pm2 /usr/bin/pm2
 注意ln指令用于创建关联（类似与Windows的快捷方式）必须给全路径，否则可能关联错误。
 
 注意：
-
-注意：
 通过ansible对 nodepro 主机组 批量添加 软连接：
  
 ansible nodepro -m shell -a "ln -s /usr/local/node/bin/npm /bin/npm"
@@ -100,7 +98,6 @@ ansible nodepro -m shell -a "ln -s /usr/local/node/bin/pm2 /bin/pm2"
 /usr/bin/npm
 [root@node ~]# which pm2
 /usr/bin/pm2
-
 
 
 ln -s /home/haoyou/sourse/node-v12.21.0-linux-x64/bin/node /usr/bin/node

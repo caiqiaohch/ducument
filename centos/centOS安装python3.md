@@ -78,32 +78,14 @@ pip: command not found
 安装xlrd、xlwt、xlutils很简单，直接【pip install xlrd】、【pip install xlwt】、【pip install xlutils】即可。
 
 
-//=================================python3中pip3安装出错,找不到SSL的解决方式==============================================
-
-
-2
-3
-4
+//=================================python3中pip3安装出错,找不到SSL的解决方式======
 pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
  
 Could not fetch URL https:*******: There was a problem confirming the ssl certificate: 
 Can't connect to HTTPS URL because the SSL module is not available. - skipping
 本人安装Python3.6的操作如下：
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+
 1.wget获取安装包：
   wget http://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz
  
@@ -120,33 +102,28 @@ Can't connect to HTTPS URL because the SSL module is not available. - skipping
   sudo make install
 在安装完之后，我们希望用pip3命令来安装numpy。首先，用如下命令安装pip3:
 
-1
+
 sudo install python3-pip
 安装完之后，使用pip3安装numpy：
 
-1
+
 sudo pip install python-numpy
 但是此时就出错了，显示本文开始提到的错误，大致意思就是安装过程需要SSL,但是那个SSL找不到。
 
 本人查阅网上资料，发现openSSL是系统自带的，所以一定是安装了的，本人用以下命令尝试再次安装openssl:
 
-1
-2
 sudo apt-get install openssl
 sudo apt-get install libssl-dev
 但是安装结果显示是对其进行更新(update)，这说明系统已经安装了openssl。但是pip3就是找不到ssl模块。
 
 本人进入python3中，然后进行ssl导入操作:
 
-1
 import ssl
 结果出错，错误如下：
 
-1
 no moudle named _ssl
 显示没有ssl模块。本人再进入python中(即系统自带的python2.7中)，进行ssl导入操作:
 
-1
 import ssl
 发现并没有显示错误，导入正常。这说明openssl已经安装了，只是python2可以调用，新安装的python3却不能调用。
 
@@ -154,10 +131,6 @@ import ssl
 
 解决办法是重新对python3.6进行编译安装，用一下过程来实现编译安装:
 
-1
-2
-3
-4
 cd Python-3.6.2
 ./configure --with-ssl
 make

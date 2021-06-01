@@ -3,8 +3,7 @@ centos7中的date命令
 一、查看系统时间
 [root@localhost ~]# date
 2020年 03月 22日 星期日 10:50:42 CST
-1
-2
+
 时区：
 UTC：世界标准时间
 GMT：格林威治标准时间
