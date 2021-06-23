@@ -49,5 +49,5 @@ chart.getAll("xxx")
 ## 打开调试信息
 network.isLogNetworkMsg=1
 
-## 天降神兵完成任务
-com.setQuestServer()
+##查看分组情况
+node bin/managerGroup.js
