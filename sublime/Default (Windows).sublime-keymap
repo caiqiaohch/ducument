@@ -1,0 +1,4 @@
+[
+	{ "keys": ["f2"], "command": "jump_back" },
+	{ "keys": ["f3"], "command": "jump_forward" },	
+]

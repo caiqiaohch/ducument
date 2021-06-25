@@ -1,0 +1,11 @@
+{
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Makefile Improved",
+		"Markdown",
+		"Vintage"
+	],
+	"theme": "Adaptive.sublime-theme"
+}
