@@ -1,4 +1,6 @@
 Visual Studio Code创建C#项目
+
+https://www.cnblogs.com/zhuanghamiao/p/vscode-csharp.html
 Visual Studio Code是一个支持跨平台的文本编辑器，同其他文本文本编辑器一样，不但占用磁盘空间小，性能也比较快；近几年由于不断的升级和许多开发者提供大量的插件，它已经成为了一个非常强大的代码编辑器。所以当我们创建一些中小型项目或者需要修改项目中的某个文件，直接使用vscode是非常方便的。
 
 安装vscode
