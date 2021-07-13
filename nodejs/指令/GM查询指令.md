@@ -28,6 +28,9 @@ network.request("game.handler.rbcQueryCity",  {type: "leaderboard", lb: "rbcScor
 network.request("game.handler.beauQueryBeauty", {type: "leaderboard", lb: "beautiChapter"}, noop);
 network.request("game.handler.beauQueryBeauty", {type: "leaderboard", lb: "beautiDamage1"}, noop);
 
+#加经验
+network.request(route.GM, {cmd:'addItem', p:{itemId:10, count:100000}, noop})
+
 ## 增加跨服排行榜测试数据
 network.request("game.handler.beauAddbeautiChapter", {}, noop);
 

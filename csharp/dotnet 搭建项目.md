@@ -1,20 +1,16 @@
 dotnet 搭建项目
 
+https://www.cnblogs.com/zhuanghamiao/p/VSCode.html
 直接进入正题，通过运行工具打开终端命令，进入到将要创建项目的目录
-
 
 创建解决方案
 通过 dotnet new sln [解决方案名称] 命令可以创建解决方案。首先先创建一个项目文件夹，将项目放再这个文件夹下面，这里我创建一个名为Shopping的项目文件夹，并再里面创建一个名为Shopping的解决方案
 
-
 创建项目
 通过 doetnet new [console|classlib] -o [项目名称] 命令可以创建项目。按一般项目的结构，分别创建一个UI层，服务层，业务层；这里将他们分别命名为：Shopping.UI(Console主程序)，Shopping.Model(类库)，Shopping.Service(类库)
 
-
 将项目添加到解决方案
 通过 doetnet sln [解决方案文件名] add [项目路径名] 命令将项目添加到解决方案中可以选择单个单个的添加。或者多个批量添加;在Linux/Unix系统中可以使用 **/*.csproj 匹配所有项目。
-
-
 
 项目类库引用
 通过 dotnet add reference [项目路径名] 可以向当前目录项目添加引用；或者通过doetnet add [项目路径名] reference [项目路径名]
@@ -58,17 +54,14 @@ dotnet add reference ../%slnname%.Infrastructure/%slnname%.Infrastructure.csproj
 cd ..
 code .
 
-
 dotnet相关资料：https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet
 
 开启VSCode
 通过上面的一顿操作，一个基本项目已经搭建完成。现在你可以通过 Code . 命令即可打开VSCode工具(关于如何安装VSCode及安装C#扩展这里就不赘述了)，VSCode会将当前目录下的项目加载到VSCode的资源管理器中。现在你可以开始正式的编码了...
 
-
 在项目上右键，通过右键菜单可以快捷的添加一个类文件；或者在资源管理器的菜单中新建一个文件，创建一个类文件。
 
 这里就随便瞎搞了一个产品类，作为测试类
-
 
 运行C#项目
 编写完代码后可以通过快捷键Shift+F5直接运行项目，当然也可以通过菜单栏里的【运行】找到项目的运行方式。或者可以通过 dotnet build生成项目和 dotnet run 命令运行你的程序。
@@ -83,15 +76,10 @@ VSCode中调试代码也很简单，类似好多开发工具，在需要调试�
 通过dotnet add package [框架名] 命令可以将框架添加到你的项目中，进入到需要被添加的项目，然后执行命令。
 
 
-
 如果想要程序中的多个项目都引用这个框架，只需要将相关的引用代码复制到项目文件中，保存后VSCode会提示重新生成相关依赖
 
 
 当然，VSCode也提供了NuGet扩展插件;安装完插件后，通过VSCode快捷键Shift+Ctrl+P打开命令工具，输入要安装的框架名
-
-
-
-
 
 其他也没啥好吹的了，毕竟官方文档都写的那么全，就这吧
 
