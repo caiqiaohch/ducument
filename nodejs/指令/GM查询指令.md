@@ -29,7 +29,16 @@ network.request("game.handler.beauQueryBeauty", {type: "leaderboard", lb: "beaut
 network.request("game.handler.beauQueryBeauty", {type: "leaderboard", lb: "beautiDamage1"}, noop);
 
 #加经验
+network.request(route.GM, {cmd:'addItem', p:{itemId:3300010, count:1}, noop})
+network.request(route.GM, {cmd:'addItem', p:{itemId:2300010, count:1}, noop})
+network.request(route.GM, {cmd:'addItem', p:{itemId:51008, count:100}, noop})
+network.request(route.GM, {cmd:'addItem', p:{itemId:51022, count:100}, noop})
+network.request(route.GM, {cmd:'addItem', p:{itemId:1, count:1000000000}, noop})
+
 network.request(route.GM, {cmd:'addItem', p:{itemId:10, count:100000}, noop})
+
+打开GM指令
+zstd.dispatchEvent(def.OPEN_GM);
 
 ## 增加跨服排行榜测试数据
 network.request("game.handler.beauAddbeautiChapter", {}, noop);
