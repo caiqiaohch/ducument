@@ -37,6 +37,8 @@ network.request(route.GM, {cmd:'addItem', p:{itemId:1, count:1000000000}, noop})
 
 network.request(route.GM, {cmd:'addItem', p:{itemId:10, count:100000}, noop})
 
+network.request(route.GM, {cmd:'addItem', p:{itemId:95, count:100}, noop})
+
 打开GM指令
 zstd.dispatchEvent(def.OPEN_GM);
 
@@ -63,3 +65,5 @@ network.isLogNetworkMsg=1
 
 ##查看分组情况
 node bin/managerGroup.js
+
+zstd.dispatchEvent(def.OPEN_GM);
