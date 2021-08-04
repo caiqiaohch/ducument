@@ -669,3 +669,5 @@ p.then((result)=>{
 我们常说什么async/await的出现淘汰了Promise，可以说是大错特错，恰恰相反，正因为有了Promise，才有了改良版的async/await，从上面分析就可以看出，两者是相辅相成的，缺一不可。
 想学好async/await必须先精通Promise，两者密不可分，有不同意见和改进的欢迎指导！
 前端小白，大家互相交流，peace！
+1
+3

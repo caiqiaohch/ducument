@@ -48,3 +48,25 @@ git version 2.23.0
 $ echo "export PATH=$PATH:/usr/local/git/bin" >> ~/.bashrc
 $ source ~/.bashrc
 　　以上，仅记录，以备忘。
+
+
+1、# cd /usr/local/src
+2、# wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
+3、# tar -zxvf libiconv-1.14.tar.gz
+4、# cd libiconv-1.14
+5、# ./configure --prefix=/usr/local/libiconv  &&  make  && make install
+
+二.创建一个软链接到/usr/lib
+
+1、# ln -s /usr/local/lib/libiconv.so /usr/lib
+2、# ln -s /usr/local/lib/libiconv.so.2 /usr/lib
+
+
+cd /usr/local/src/
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.23.0.tar.xz
+tar -xvf git-2.23.0.tar.xz
+cd git-2.23.0/
+make prefix=/usr/local/git all
+make prefix=/usr/local/git install
+echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/profile
+source /etc/profile
