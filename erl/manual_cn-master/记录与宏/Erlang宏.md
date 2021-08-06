@@ -1,6 +1,6 @@
-Erlang宏
+# Erlang宏
 
-Erlang宏
+
 在 messager 系统添加的另外一种东西是宏。在 mess_config.hrl 文件中包含如下的定义：
 
 %%% Configure the location of the server node,

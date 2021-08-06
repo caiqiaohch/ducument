@@ -1,6 +1,6 @@
-Erlang 更多关于列表的内容
+# Erlang 更多关于列表的内容
 
-Erlang 更多关于列表的内容
+
 | 操作符可以用于取列表中的首元素:
 
 47> [M1|T1] = [paris, london, rome].

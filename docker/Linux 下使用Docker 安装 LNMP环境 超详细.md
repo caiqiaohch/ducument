@@ -1,4 +1,5 @@
-Linux 下使用Docker 安装 LNMP环境 超详细
+# Linux 下使用Docker 安装 LNMP环境 超详细
+
 首先在阿里云购买了一台服务器 选择了华南-深圳地区 操作系统选用了 CentOS8.0 64位
 
 1. 初始化账号密码 登陆xshell，开始装Docker
@@ -20,7 +21,7 @@ $ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 5、设置yum源
 
 $ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
- 
+
 6、可以查看所有仓库中所有docker版本，并选择特定版本安装
 
 $ yum list docker-ce --showduplicates | sort -r
@@ -50,16 +51,17 @@ $ sudo systemctl enable docker
 9、验证安装是否成功(有client和service两部分表示docker安装启动都成功了)
 
 $ docker version
- 
+
  10、查看docker列表
 
 $ sudo systemctl docker images
 
 以上安装docker 内容完毕，接下来通过运行环境.
 
- -------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
-docker安装nginx 
+## docker安装nginx 
+
 1
 docker search nginx
 
@@ -80,10 +82,6 @@ docker run --name nginx -p 80:80 -d nginx
 
 
 
- 
-
- 
-
  上面运行报错了，这里是以前装了nginx,通过docker ps -a 查看
 
 
@@ -100,7 +98,7 @@ docker rm `docker ps -a -q`
 docker run --name nginx -p 80:80 -d nginx<br>通过netstat -nltp 可以查看到80 端口已经启动。
 
 
- 
+
 
 此刻访问IP,nginx 正常运行起来
 
@@ -163,7 +161,7 @@ vim index2.php
 
 apt-get update
 apt-get install vim
- 
+
 cat << EOF > /root/.vimrc
 :set encoding=utf-8
 :set fileencodings=ucs-bom,utf-8,cp936
@@ -199,7 +197,7 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' php
 
 docker exec -it phpfpm bash
 cd /etc/nginx/conf.d/
- 
+
 apt-get update
 apt-get install vim
 vim default.conf
@@ -209,30 +207,30 @@ server {
     listen       80;
     listen  [::]:80;
     server_name  localhost;
- 
+
     #charset koi8-r;
     #access_log  /var/log/nginx/host.access.log  main;
- 
+     
     location / {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
     }
      
     #error_page  404              /404.html;
- 
+     
     # redirect server error pages to the static page /50x.html
     #
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
         root   /usr/share/nginx/html;
     }
- 
+     
     # proxy the PHP scripts to Apache listening on 127.0.0.1:80
     #
     #location ~ \.php$ {
     #    proxy_pass   http://127.0.0.1;
     #}
- 
+     
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     # 加入以下的代码 可以访问php文件
     location ~ \.php$ {
@@ -243,7 +241,7 @@ server {
         #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
         include        fastcgi_params;
     }
- 
+     
     # deny access to .htaccess files, if Apache's document root
     # concurs with nginx's one
     #
@@ -316,10 +314,10 @@ mysql> ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 mysql> flush privileges;
 
 
- 
 
- 
 
- 
+
+
+
 
  以上是MySQL安装的全过程，目前的环境搭建已经全部完成了。

@@ -1,11 +1,12 @@
-Centos7上安装docker
+# Centos7上安装docker
 
 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。
 
 社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费服务，比如经过官方测试认证过的基础设施、容器、插件等。
 
 社区版按照stable和edge两种方式发布，每个季度更新stable版本，如17.06，17.09；每个月份更新edge版本，如17.09，17.10。
- 一、安装docker
+
+##  一、安装docker
 
 1、Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。
 
@@ -51,8 +52,7 @@ $ sudo systemctl enable docker
 
 $ docker version
 
- 
- 二、问题
+##  二、问题
 
 1、因为之前已经安装过旧版本的docker，在安装的时候报错如下：
 复制代码

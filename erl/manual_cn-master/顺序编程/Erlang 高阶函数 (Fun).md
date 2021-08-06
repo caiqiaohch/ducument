@@ -1,4 +1,4 @@
-Erlang 高阶函数 (Fun)
+# Erlang 高阶函数 (Fun)
 
 Erlang 作为函数式编程语言自然拥有高阶函数。在 shell 中，我们可以这样使用：
 

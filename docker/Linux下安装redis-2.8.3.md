@@ -1,7 +1,6 @@
-Linux下安装redis-2.8.3
+# Linux下安装redis-2.8.3
 
-Linux下安装redis-2.8.3
-安装
+## 安装
 
     下载安装包 wget http://download.redis.io/releases/redis-2.8.3.tar.gz)
     解压 tar -zxf redis-2.8.3.tar.gz
@@ -16,7 +15,7 @@ Linux下安装redis-2.8.3
     \o/ All tests passed without errors!
     恭喜你，安装成功！
 
-配置
+## 配置
 
 make install仅仅在你的系统上安装了二进制文件，不会替你默认配置init脚本和配置文件，为了把它用在生产环境而安装它
 
@@ -30,7 +29,7 @@ $ sudo ./install_server.sh
 
 exists, process is already running or crashed
 
-    1
+    
 
 应该环境变量pidfile有问题，直接执行命令/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf启动成功。
 

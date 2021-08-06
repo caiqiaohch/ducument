@@ -1,6 +1,6 @@
-Erlang分布式编程
+# Erlang分布式编程
 
-Erlang分布式编程
+
 下面我们进一步对 ping pong 示例程序进行改进。 这一次，我们要让 “ping”、“pong” 进程分别位于不同的计算机上。要想让这个程序工作，你首先的搭建一下分布式的系统环境。分布式 Erlang 系统的实现提供了基本的安全机制，它阻止未授权的外部设备访问本机的 Erlang 系统。同一个系统中的 Erlang 要想相互通信需要设置相同的 magic cookie。设置 magic cookie 最便捷地实现方式就是在你打算运行分布式 Erlang 系统的所有计算机的 home 目录下创建一个 .erlang.cookie 文件：
 
 在 windows 系统中，home 目录为环境变量 $HOME 指定的目录--这个变量的值可能需要你手动设置

@@ -1,6 +1,4 @@
-CentOS 下安装编绎安装Redis
-
- CentOS 下安装编绎安装Redis
+#  CentOS 下安装编绎安装Redis
 
 先去http://www.redis.io/ 这个网站下载源码
 
