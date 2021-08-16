@@ -74,3 +74,32 @@ cast们对应的回调函数是`handle_cast/2`，具体为：`handle_cast(Msg, S
 上面介绍的handle函数返回{stop,...}，就会使用回调函数`terminate/2`进行扫尾工作。 典型的如关闭已打开的资源、文件、网络连接，打log做记录，通知别的进程“我要死啦”， 或是“信春哥，满血复活”：利用传进来的状态State重新启动服务器。
 
 最简单的就是啥都不干，返回ok就好了。
+
+gen_server就是OTP库中提供的, 包装好了常见的进程间通信的一个Behavior.
+
+基本流程: gen_sever对请求进行监听, match到对应的请求后, 调用指定module中的函数处理, 并返回结果(call的情况下), 或者不返回结果(cast). 也就是说, 你编码时, 只需要负责写回调函数来做逻辑, 通信和异常处理全部交给gen_server.
+
+```text
+gen_server module            Callback module
+---------------                      ---------------
+gen_server:start_link -----> Module:init/1                  
+在收到start_link请求时, gen_server会调用init函数, 其可以近似地理解为类的构造函数. 
+根据init函数创建进程并链接到当前进程(也可以不链接, 不过新进程挂掉了就无法通知其他进程了).
+                                                          
+gen_server:call         -----> Module:handle_call/3           
+响应请求, 并返回返回值, 这是同步的, 你只需要写handle_call里的操作即可
+
+gen_server:cast        -----> Module:handle_cast/2           
+收到cast请求后, 请求会被放入被请求进程的mailbox(请求队列), 被请求进程顺序处理, 就是异步啦.
+这或许是用得最多的了吧. 不过注意, 这就有可能会产生"同步"问题了.
+
+一个atom                 -----> Module:handle_info/2
+如果收到的消息不是gen_sever风格的消息, 则会尝试用handle_info匹配, 无返回值, 和cast基本一样. 
+常用于定时器, 或者简单地向server发送一个开启活动/关闭活动的标志.
+
+shutdown(及Reason) -----> Module:terminate/2
+可以近似地理解为类的析构函数, 在一个gen_server进程终止前进行的操作.
+
+
+剩下的Module:code_change/3和Module:format_status/2就比较少用啦.
+```
