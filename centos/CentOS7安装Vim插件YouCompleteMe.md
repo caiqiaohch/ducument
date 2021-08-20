@@ -136,7 +136,7 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cp
 执行插件安装
 
 ```
-vim +PluginInstall +qall1
+:
 ```
 
 ## 三、增加配色方案
