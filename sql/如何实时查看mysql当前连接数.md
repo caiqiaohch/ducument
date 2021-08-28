@@ -67,3 +67,7 @@ mysql> show processlist; 可以显示前100条连接信息 show full processlist
 set-variable=max_user_connections=30 这个就是单用户的连接数
 set-variable=max_connections=800 这个是全局的限制连接数
 
+
+
+
+

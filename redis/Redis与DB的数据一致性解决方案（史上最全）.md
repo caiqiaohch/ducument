@@ -33,7 +33,7 @@
 
 ### 预备知识： 谈谈一致性
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212345415.png)](https://img-blog.csdnimg.cn/20210522212345415.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212345415.png)](https://img-blog.csdnimg.cn/20210522212345415.png)
 
 一致性就是数据保持一致，在分布式系统中，可以理解为多个节点中数据的值是一致的。
 
@@ -57,7 +57,7 @@ Cache-Aside Pattern，即旁路缓存模式，它的提出是为了尽可能地�
 
 Cache-Aside Pattern的读请求流程如下：
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212436746.png)](https://img-blog.csdnimg.cn/20210522212436746.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212436746.png)](https://img-blog.csdnimg.cn/20210522212436746.png)
 
 > 读的时候，先读缓存，缓存命中的话，直接返回数据;
 >
@@ -67,7 +67,7 @@ Cache-Aside Pattern的读请求流程如下：
 
 Cache-Aside Pattern的写请求流程如下：
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212459467.png)](https://img-blog.csdnimg.cn/20210522212459467.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212459467.png)](https://img-blog.csdnimg.cn/20210522212459467.png)
 
 > 更新的时候，先更新数据库，然后再删除缓存。
 
@@ -78,7 +78,7 @@ Read/Write Through模式中，服务端把缓存作为主要数据存储。应�
 ### Read-Through读流程
 
 Read-Through的简要读流程如下
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212516398.png)](https://img-blog.csdnimg.cn/20210522212516398.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212516398.png)](https://img-blog.csdnimg.cn/20210522212516398.png)
 
 > 从缓存读取数据，读到直接返回
 > 如果读取不到的话，从数据库加载，写入缓存后，再返回响应。
@@ -87,7 +87,7 @@ Read-Through的简要读流程如下
 
 其实Read-Through就是多了一层Cache-Provider，流程如下：
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212527364.png)](https://img-blog.csdnimg.cn/20210522212527364.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212527364.png)](https://img-blog.csdnimg.cn/20210522212527364.png)
 
 > Read-Through的优点
 
@@ -97,13 +97,13 @@ Read-Through实际只是在Cache-Aside之上进行了一层封装，它会让程
 
 Write-Through模式下，当发生写请求时，也是由缓存抽象层完成数据源和缓存数据的更新,流程如下：
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212542188.png)](https://img-blog.csdnimg.cn/20210522212542188.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212542188.png)](https://img-blog.csdnimg.cn/20210522212542188.png)
 
 ## **Write behind （异步缓存写入）**
 
 Write behind跟Read-Through/Write-Through有相似的地方，都是由Cache Provider来负责缓存和数据库的读写。它两又有个很大的不同：Read/Write Through是同步更新缓存和数据的，Write Behind则是只更新缓存，不直接更新数据库，通过批量异步的方式来更新数据库。
 
-[![加粗样式](https://img-blog.csdnimg.cn/20210522212601631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dqMTMxNDI1MA==,size_16,color_FFFFFF,t_70)](https://img-blog.csdnimg.cn/20210522212601631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dqMTMxNDI1MA==,size_16,color_FFFFFF,t_70)
+[![加粗样式](H:\ducument\redis\img\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dqMTMxNDI1MA==,size_16,color_FFFFFF,t_70)](https://img-blog.csdnimg.cn/20210522212601631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dqMTMxNDI1MA==,size_16,color_FFFFFF,t_70)
 
 这种方式下，缓存和数据库的一致性不强，对一致性要求高的系统要谨慎使用。
 
@@ -128,10 +128,10 @@ Write Behind Caching 的优点是直接**操作内存速度快**，多次操作�
 
 有些小伙伴可能会问， Cache-Aside在写入请求的时候，为什么是删除缓存而不是更新缓存呢？
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212625984.png)](https://img-blog.csdnimg.cn/20210522212625984.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212625984.png)](https://img-blog.csdnimg.cn/20210522212625984.png)
 
 我们在操作缓存的时候，到底应该删除缓存还是更新缓存呢？我们先来看个例子：
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212636740.png)](https://img-blog.csdnimg.cn/20210522212636740.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212636740.png)](https://img-blog.csdnimg.cn/20210522212636740.png)
 
 操作的次序如下：
 
@@ -158,7 +158,7 @@ Write Behind Caching 的优点是直接**操作内存速度快**，多次操作�
 
 Cache-Aside缓存模式中，有些小伙伴还是有疑问，在写入请求的时候，为什么是先操作数据库呢？为什么不先操作缓存呢？
 假设有A、B两个请求，请求A做更新操作，请求B做查询读取操作。
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212702594.png)](https://img-blog.csdnimg.cn/20210522212702594.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212702594.png)](https://img-blog.csdnimg.cn/20210522212702594.png)
 
 A、B两个请求的操作流程如下：
 
@@ -233,7 +233,7 @@ CAP理论作为分布式系统的基础理论,它描述的是一个分布式系�
 > 2 再更新数据库
 > 3 休眠一会（比如1秒），再次删除缓存。
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212738942.png)](https://img-blog.csdnimg.cn/20210522212738942.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212738942.png)](https://img-blog.csdnimg.cn/20210522212738942.png)
 
 参考代码如下：
 
@@ -253,7 +253,7 @@ CAP理论作为分布式系统的基础理论,它描述的是一个分布式系�
 
 删除失败就多删除几次呀,保证删除缓存成功呀~ 所以可以引入删除缓存重试机制
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210522212754919.png)](https://img-blog.csdnimg.cn/20210522212754919.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210522212754919.png)](https://img-blog.csdnimg.cn/20210522212754919.png)
 
 #### 删除缓存重试机制的大致步骤：
 
@@ -269,7 +269,7 @@ CAP理论作为分布式系统的基础理论,它描述的是一个分布式系�
 
 其实，还可以通过数据库的binlog来异步淘汰key。
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210604232650484.png)](https://img-blog.csdnimg.cn/20210604232650484.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210604232650484.png)](https://img-blog.csdnimg.cn/20210604232650484.png)
 
 以mysql为例 可以使用阿里的canal将binlog日志采集发送到MQ队列里面，然后编写一个简单的缓存删除消息者订阅binlog日志，根据更新log删除缓存，并且通过ACK机制确认处理这条更新log，保证数据缓存一致性
 
@@ -310,7 +310,7 @@ Redis通过publish和subscribe命令实现订阅和发布的功能。订阅者�
 
 因为主从DB同步存在延时时间。如果删除缓存之后，数据同步到备库之前已经有请求过来时， **「会从备库中读到脏数据」**，如何解决呢？解决方案如下流程图：
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210604233629281.png)](https://img-blog.csdnimg.cn/20210604233629281.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210604233629281.png)](https://img-blog.csdnimg.cn/20210604233629281.png)
 
 ### 缓存与数据的一致性的保障策略总结
 
@@ -332,7 +332,7 @@ Redis通过publish和subscribe命令实现订阅和发布的功能。订阅者�
 
 ### biglog同步保障数据一致性的架构
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20210605204112427.png)](https://img-blog.csdnimg.cn/20210605204112427.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20210605204112427.png)](https://img-blog.csdnimg.cn/20210605204112427.png)
 
 ### 技术栈
 
@@ -354,7 +354,7 @@ Redis通过publish和subscribe命令实现订阅和发布的功能。订阅者�
 
 canal是一个伪装成slave订阅mysql的binlog，实现数据同步的中间件。
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20200820110701163.png)](https://img-blog.csdnimg.cn/20200820110701163.png)
+[![在这里插入图片描述](H:\ducument\redis\img\20200820110701163.png)](https://img-blog.csdnimg.cn/20200820110701163.png)
 
 - canal 模拟 MySQL slave 的交互协议，伪装自己为 MySQL slave ，向 MySQL master 发送 dump 协议
 - MySQL master 收到 dump 请求，开始推送 binary log 给 slave (即 canal )
@@ -362,7 +362,7 @@ canal是一个伪装成slave订阅mysql的binlog，实现数据同步的中间�
 
 ##### canal架构
 
-[![在这里插入图片描述](https://img-blog.csdnimg.cn/20200820110947180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwNDY5MDg=,size_16,color_FFFFFF,t_70#pic_center)](https://img-blog.csdnimg.cn/20200820110947180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwNDY5MDg=,size_16,color_FFFFFF,t_70#pic_center)
+[![在这里插入图片描述](H:\ducument\redis\img\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwNDY5MDg=,size_16,color_FFFFFF,t_70#pic_center)](https://img-blog.csdnimg.cn/20200820110947180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAwNDY5MDg=,size_16,color_FFFFFF,t_70#pic_center)
 说明：
 
 - server代表一个canal运行实例，对应于一个jvm
