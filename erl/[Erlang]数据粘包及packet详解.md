@@ -1,4 +1,4 @@
-[Erlang]数据粘包及packet详解
+# [Erlang]数据粘包及packet详解
 
 我们知道，erlang实现的网络服务器性能非常高。erlang的高效不在于短短几行代码就能写出一个服务端程序，而在于不用太多代码，也能够写出一个高效的服务端程序。而这一切的背后就是erlang对很多网络操作实现了近乎完美的封装，使得我们受益其中。文章将讨论erlang gen_tcp 数据连包问题及erlang的解决方案。
 
@@ -80,10 +80,10 @@ gen_tcp 通信传输的数据将包含两部分：包头+数据。gen_tcp:send/2
     start_server/0,  
     start_client_unpack/0, start_client_packed/0  
     ]).  
-  
+
 -define(PORT, 8888).  
 -define(PORT2, 8889).  
-  
+
 start_server()->  
     {ok, ListenSocket} = gen_tcp:listen(?PORT, [binary,{active,false}]),  
     {ok, ListenSocket2} = gen_tcp:listen(?PORT2, [binary,{active,false},{packet,2}]),  
@@ -92,7 +92,7 @@ start_server()->
     receive  
         _ -> ok  
     end.  
-  
+
 accept(ListenSocket)->  
     case gen_tcp:accept(ListenSocket) of  
         {ok, Socket} ->  
@@ -101,7 +101,7 @@ accept(ListenSocket)->
         _ ->  
             ok  
     end.  
-  
+
 loop(Socket)->  
     case gen_tcp:recv(Socket,0) of  
         {ok, Data}->  
@@ -111,7 +111,7 @@ loop(Socket)->
         {error, Reason}->  
             io:format("socket error: ~p~n", [Reason])  
     end.  
-  
+
 start_client_unpack()->  
     {ok,Socket} = gen_tcp:connect({127,0,0,1},?PORT,[binary,{active,false}]),  
     gen_tcp:send(Socket, "1"),  
@@ -120,7 +120,7 @@ start_client_unpack()->
     gen_tcp:send(Socket, "4"),  
     gen_tcp:send(Socket, "5"),  
     sleep(1000).  
-  
+
 start_client_packed()->  
     {ok,Socket} = gen_tcp:connect({127,0,0,1},?PORT2,[binary,{active,false},{packet,2}]),  
     gen_tcp:send(Socket, "1"),  
@@ -129,7 +129,7 @@ start_client_packed()->
     gen_tcp:send(Socket, "4"),  
     gen_tcp:send(Socket, "5"),  
     sleep(1000).  
-  
+
 sleep(Count) ->  
     receive  
     after Count ->  
@@ -141,7 +141,7 @@ sleep(Count) ->
 C:\>erlc tcp_test.erl  
 C:\>erl -s tcp_test start_server  
 Eshell V5.10.2  (abort with ^G)  
-  
+
 1> tcp_test:start_client_packed().  
 received message <<"1">>  
 received message <<"2">>  
@@ -149,7 +149,7 @@ received message <<"3">>
 received message <<"4">>  
 received message <<"5">>  
 ok  
-  
+
 2> tcp_test:start_client_unpack().  
 received message <<"12345">>  
 ok  
@@ -188,7 +188,7 @@ BOOL IsBigEndian()
     (( (UINT)(A) & 0x00ff0000) >> 8)   | \  
     (( (UINT)(A) & 0x0000ff00) << 8)   | \  
     (( (UINT)(A) & 0x000000ff) << 24))  
-  
+
 // 16位字数据  
 #define LittletoBig16(A)   (( ((USHORT)(A) & 0xff00) >> 8)    | \  
     (( (USHORT)(A) & 0x00ff) << 8))  
