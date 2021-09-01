@@ -1,0 +1,58 @@
+#### Erlang之回调函数
+
+需求描述：想实现一种简单的回调框架。这里以最简单的形式来说明，代码如下：
+
+-module(test).
+-export([test/1]).
+%% 希望给call_back传入一个函数及一个参数。通过这个函数来处理这个参数。
+frame_call_back(Process, Data) ->
+    Process(Data).
+%% 有了上面这个框架后，便可以专注于两点：1，Process函数的逻辑功能实现；2，需要处理的数据。
+process(Data) ->
+    {process_output,  Data}.
+%% 好的上面的实现感觉很完善了，现在写个测试函数去调用一下：
+test(Data) ->
+    frame_call_back(process, Data).
+
+编译运行：
+
+
+
+结论：发现编译有个警告，运行也出错了。警告说process函数未被使用。为什么呢？在test函数中不是用了么？开始我就觉得郁闷。
+注意：在test函数中的调用process，这里并不是一个函数，只是一个普通的原子。
+
+找到了问题，再进行改善，最后两行编写的思想肯定是没有问题，问题是如何让编译器知道process是一个函数，而不是一个原子。
+解决方法：通过fun来进行显示声明，fun process/1, 注意声明process是函数的同时，也要告诉编译器这个函数所处理参数的个数。
+最后两行代码改成：
+test(Data) ->
+    frame_call_back(fun process/1, Data).
+
+编译运行：
+
+
+从上面可以看到，编译和运行都没有问题。大功告成。
+
+虽然上面达到了我们的目的，但是我这里还要提供另一种方法，不用fun process/1这种形式。
+而是新定义一个变量，声明一个匿名函数，函数的主体就是我们需要的process函数，将匿名函数赋值给该变量（模式匹配）。
+test(Data) ->
+    Process_fun =  fun(X) -> process(X) end,  
+    frame_call_back(Process_fun , Data).
+编译运行：
+和上在一样，都是没有问题的。
+
+将完整无误的代码再贴一遍：
+-module(test).
+-export([test/1]).
+frame_call_back(Process, Data) ->
+    Process(Data).
+process(Data) ->
+    {process_output,  Data}.
+test(Data) ->
+    Process_fun =  fun(X) -> process(X) end,  
+    frame_call_back(Process_fun , Data).
+
+%test(Data) ->
+%   frame_call_back(fun process/1, Data).
+————————————————
+版权声明：本文为CSDN博主「风吹过的时光」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/hzhsan/article/details/48812317
