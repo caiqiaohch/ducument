@@ -1,4 +1,5 @@
-CROSS-GDB 嵌入式linux的 交叉调试
+# CROSS-GDB 嵌入式linux的 交叉调试
+
 2009-12-02 0:11
 从http://ftp.gnu.org/gnu/gdb下载GDB源代码--gdb-6.2.1.tar.bz2 
 1－编译GDB客户端： 

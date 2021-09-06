@@ -1,4 +1,4 @@
-How To Install Nagios 4.4.x on Debian 9 Stretch
+# How To Install Nagios 4.4.x on Debian 9 Stretch
 
     apt update 
 
@@ -16,7 +16,7 @@ libgd2-xpm-dev
     wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.3.tar.gz
     tar -zxvf nagios-4.4.3.tar.gz 
     cd /tmp/nagios-4.4.3/
-    
+
 
 
     ./configure --with-nagios-group=nagios --with-command-group=nagcmd --with-httpd_conf=/etc/apache2/sites-enabled/

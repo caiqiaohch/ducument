@@ -1,4 +1,4 @@
-【最新】LuaJIT 32/64 位字节码，从编译到使用全纪录
+# 【最新】LuaJIT 32/64 位字节码，从编译到使用全纪录
 
 网上关于 LuaJIT 的讨论，已经显得有些陈旧。如果你对 LuaJIT 编译 Lua 源文件为具体的 32位或64位字节码，极其具体使用感兴趣的话，不妨快速读一下这篇文章。此文章针对尝试在 iOS 或 Android 上使用 LuaJIT 的小伙伴。限于篇幅，此处假定，你可以成功在 iOS/Android App 中集成了 LuaJIT,并且已经可以执行源码形式的 Lua 文件。
 
@@ -60,7 +60,7 @@ Lua 源文件，同时编译生成32位和64位字节码的文件。
         #else
         return ".yan64"
         #endif
-
+    
     }
 参考文章
 How to determine if compiling for 64-bit iOS in Xcode

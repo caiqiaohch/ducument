@@ -1,4 +1,5 @@
-（一）初识Luajit
+# （一）初识Luajit
+
 本人博客地址：http://www.cppblog.com/pwq1989/
 
 第一篇对Luajit做一个大概的介绍，我目前也正在慢慢的读通源码中，以后发现了新东西就补充在这里。

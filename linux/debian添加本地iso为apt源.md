@@ -1,4 +1,4 @@
-debian添加本地iso为apt源
+# debian添加本地iso为apt源
 
 本文链接：https://blog.csdn.net/qq_21792169/article/details/80866564
 通常虚拟机安装debian后安装软件，需要手动切换本地镜像软件源，这样非常麻烦，下面方法很实用。

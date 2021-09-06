@@ -1,4 +1,4 @@
-Debian 如何修改默认网卡为 eth0
+# Debian 如何修改默认网卡为 eth0
 
 Debian 系统安装以后，可能会遇到网卡设备名不是常见的 eth0 的情况。我们有没有办法统一网卡设备名称呢？
 
@@ -98,7 +98,7 @@ root@debian:~# systemctl restart sshd
 
 
       2.linux系统安装vmware Tools（下面以CentOS为例）：
-
+    
       1、打开VMware Workstation虚拟机，开启CentOS系统
       虚拟机-安装VMware Tools
       登录CentOS终端命令行

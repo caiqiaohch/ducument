@@ -1,7 +1,7 @@
-Step By Step(Lua字符串库)
+# Step By Step(Lua字符串库)
 
   1. 基础字符串函数：
-  
+
     字符串库中有一些函数非常简单，如：
     1). string.len(s) 返回字符串s的长度；
     2). string.rep(s,n) 返回字符串s重复n次的结果；
@@ -17,9 +17,9 @@ Step By Step(Lua字符串库)
     print(string.byte("abc"))      --输出97
     print(string.byte("abc",-1))  --输出99
     由于字符串类型的变量都是不可变类型的变量，因此在所有和string相关的函数中，都无法改变参数中的字符串值，而是生成一个新值返回。
-
+    
     2. 模式匹配函数：
-   
+       
     Lua的字符串库提供了一组强大的模式匹配函数，如find、match、gsub和gmatch。
     1). string.find函数：
     在目标字符串中搜索一个模式，如果找到，则返回匹配的起始索引和结束索引，否则返回nil。如：
@@ -34,7 +34,7 @@ Step By Step(Lua字符串库)
 
     string.find函数还有一个可选参数，它是一个索引，用于告诉函数从目标字符串的哪个位置开始搜索。主要用于搜索目标字符串中所有匹配的子字符串，且每次搜索都从上一次找到的位置开始。如：
 
-复制代码
+```
 1 local t = {}
 2 local i = 0
 3 while true do
@@ -44,7 +44,11 @@ Step By Step(Lua字符串库)
 7     end
 8     t[#t + 1] = i
 9 end
-复制代码
+```
+
+
+
+
 
     2). string.match函数：
     该函数返回目标字符串中和模式字符串匹配的部分。如：
@@ -61,23 +65,34 @@ Step By Step(Lua字符串库)
     print(string.gsub("all lii","l","x",2))  --输出axx lii
     函数string.gsub还有另一个结果，即实际替换的次数。
     count = select(2, string.gsub(str," "," "))  --输出str中空格的数量
-
+    
     4). string.gmatch函数：
     返回一个函数，通过这个返回的函数可以遍历到一个字符串中所有出现指定模式的地方。如：
 
 复制代码
+
+```
 1 words = {}
 2 s = "hello world"
 3 for w in string.gmatch(s,"%a+") do
 4     print(w)
 5     words[#words + 1] = w
 6 end
+```
+
 7 --输出结果为：
 8 --hello
 9 --world
 复制代码
     3. 模式：
     下面的列表给出了Lua目前支持的模式元字符；
+
+7 --输出结果为：
+8 --hello
+9 --world
+复制代码
+    3. 模式：
+        下面的列表给出了Lua目前支持的模式元字符；
 
 模式元字符	描述
 .	所有字符
@@ -100,14 +115,22 @@ Step By Step(Lua字符串库)
     横线(-)表示连接一个范围，比如[0-9A-Z]
     如果^字符在方括号内，如[^\n]，表示除\n之外的所有字符，即表示方括号中的分类的补集。如果^不在方括号内，则表示以后面的字符开头，$和它正好相反，表示以前面的字符结束。如：^Hello%d$，匹配的字符串可能为Hello1、Hello2等。
     在Lua中还提供了4种用来修饰模式中的重复部分，如：+(重复1次或多次)、*(重复0次或多次)、-(重复0次或多次)和?(出现0或1次)。如：
+
+```
     print(string.gsub("one, and two; and three","%a+","word")) --输出word, word word; word word
     print(string.match("the number 1298 is even","%d+")) --输出1298
-    星号(*)和横线(-)的主要差别是，星号总是试图匹配更多的字符，而横线则总是试图匹配最少的字符。
+```
+
+​    
+
+*星号(*)和横线(-)的主要差别是，星号总是试图匹配更多的字符，而横线则总是试图匹配最少的字符。
 
     4. 捕获(capture)：
     捕获功能可根据一个模式从目标字符串中抽出匹配于该模式的内容。在指定捕获是，应将模式中需要捕获的部分写到一对圆括号内。对于具有捕获的模式，函数string.match会将所有捕获到的值作为单独的结果返回。即它会将目标字符串切成多个捕获到的部分。如：
 
 复制代码
+
+```
 1 pair = "name = Anna"
 2 key,value = string.match(pair,"(%a+)%s*=%s*(%a+)")
 3 print(key,value)  --输出name anna
@@ -115,6 +138,11 @@ Step By Step(Lua字符串库)
 5 date = "Today is 2012-01-02"
 6 y,m,d = string.match(date,"(%d+)\-(%d+)\-(%d+)")
 7 print(y,m,d)      --输出2012    01      02
+```
+
+复制代码
+    还可以对模式本身使用捕获。即%1表示第一个捕获，以此类推，%0表示整个匹配，如：
+
 复制代码
     还可以对模式本身使用捕获。即%1表示第一个捕获，以此类推，%0表示整个匹配，如：
 
@@ -125,6 +153,8 @@ Step By Step(Lua字符串库)
     string.gsub函数的第三个参数不仅可以是字符串，也可以是函数或table，如果是函数，string.gsub会在每次找到匹配时调用该函数，调用时的参数就是捕获到的内容，而该函数的返回值则作为要替换的字符串。当用一个table来调用时，string.gsub会用每次捕获到的内容作为key，在table中查找，并将对应的value作为要替换的字符串。如果table中不包含这个key，那么string.gsub不改变这个匹配。如：
 
 复制代码
+
+```
  1 function expand(s)
  2     return (string.gsub(s,"$(%w+)",_G))
  3 end
@@ -138,4 +168,8 @@ Step By Step(Lua字符串库)
 11 end
 12 
 13 print(expand2("print = $print; a = $a")) --输出 print = function: 002B77C0; a = nil
+```
+
+
+
 复制代码

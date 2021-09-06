@@ -1,3 +1,5 @@
+# learning_go
+
 多个 var 声明可以成组，const 和 import 同样允许这么做。
 
     var (
@@ -61,24 +63,24 @@ Go 有 goto 语句——明智的使用它。
 它不会匹配失败后自动向下尝试，但是可以使用fallthrough使其这样做。没有 fallthrough：
 
     switch i {
-	    case 0: // 空的case 体
-	    case 1:
-	    f() // 当i == 0 时，f 不会被调用！
+        case 0: // 空的case 体
+        case 1:
+        f() // 当i == 0 时，f 不会被调用！
     }
-
+    
     而这样：
-
+    
     switch i {
-	    case 0: fallthrough
-	    case 1:
-	    f() // 当i == 0 时，f 会被调用！
+        case 0: fallthrough
+        case 1:
+        f() // 当i == 0 时，f 会被调用！
     }
-
+    
     分支可以使用逗号分隔的列表。
     func shouldEscape(c byte) bool {
-	    switch c {
-		    case ' ', '?', '&', '=', '#', '+': ← , as "or"
-		    return true
-	    }
-	    return false
+        switch c {
+    	    case ' ', '?', '&', '=', '#', '+': ← , as "or"
+    	    return true
+        }
+        return false
     }

@@ -1,8 +1,10 @@
+# centos编译问题
+
 修复/lib/ld-linux.so.2: bad ELF interpreter: No such file or directory问题
 
 1、在64系统里执行32位程序如果出现/lib/ld-linux.so.2: 
 bad ELF interpreter: No such file or directory，安装下glibc.i686 即可
- 
+
 sudo yum install glibc.i686
   www.2cto.com  
 2、error while loading shared libraries: libz.so.1: 

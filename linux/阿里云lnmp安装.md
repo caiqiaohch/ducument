@@ -1,3 +1,5 @@
+# 阿里云lnmp安装
+
 https://bbs.aliyun.com/read/115941.html
 一句话开头：欲善其事，先利其器一直以来，在VPS上没少花时间折腾，本文针对新人，菜鸟级别的网站管理员，如果你是高手，请别吐槽，如发现我有错误，记得指点，小的先谢过。 
 服务器配置硬件信息： 
@@ -9,19 +11,19 @@ LNMP 安装环境步骤
 采用LNMP0.9 军哥一键安装包；
 添加域名（包括数据库，URL重写规则，301，404错位）；
 优化、配置（包括函数的开启，权限的配置）。
- 
+
 第一步 阿里云主机的Linux系统挂载数据盘 
 适用系统：Redhat , CentOS 
 Linux的云主机数据盘未做分区和格式化，可以根据以下步骤进行分区以及格式化操作。下面的操作将会把数据盘划分为一个分区来使用。
 查看数据盘在没有分区和格式化数据盘之前，使用 “df –h”命令，是无法看到数据盘的，可以使用“fdisk -l”命令查看。如下图：
 对数据盘进行分区执行“fdisk /dev/xvdb”命令，对数据盘进行分区；根据提示，依次输入“n”，“p”“1”，两次回车，“wq”，分区就开始了，很快就会完成。
 查看新的分区使用“fdisk -l”命令可以看到，新的分区xvdb1已经建立完成了。
- 
+
 
 格式化新分区使用“mkfs.ext3 /dev/xvdb1”命令对新分区进行格式化，格式化的时间根据硬盘大小有所不同。
 添加分区信息使用“echo ‘/dev/xvdb1 /mnt ext3 defaults 0 0’ >> /etc/fstab”命令写入新分区信息。然后使用“cat /etc/fstab”命令查看，出现以下信息就表示写入成功。
 挂载新分区使用“mount -a”命令挂载新分区，然后用“df -h”命令查看，出现以下信息就说明挂载成功，可以开始使用新的分区了。
- 
+
 OK，到此阿里云主机的Linux系统挂载数据盘搞定，其实很简单。 
 安装LNMP0.9 军哥一键安装包 
 LNMP简介 
@@ -45,20 +47,20 @@ ionCube(可选)
 PureFTPd(可选) 
 imageMagick(可选) 
 memcached(可选) 
- 
+
 菜鸟们如何安装LNMP？ 
- 
- 
+
+
 LNMP的安装很简单，请查看LNMP安装教程网址： 
 http://lnmp.org/install.html 
 我这里就不提及如何安装了，主要是分享下安装成功后的经验： 
 经验提醒：第一次填写的域名最好是二级域名或IP，这样方便以后管理，如下图： 
- 
+
 通常安装完之后：你会看到一下图片，表示LNMP环境成功了。 
- 
+
 接下来，添加域名（包括数据库，URL重写规则，301，404错误页面） 
- 
- 
+
+
 添加域名 
 执行如下命令：/root/vhost.sh 
 根据提示输入要绑定的域名，回车，回车就会自动添加虚拟主机。 
@@ -82,7 +84,7 @@ cd /usr/local/nginx/conf/vhost下相应的.conf文件
 vi cd /usr/local/nginx/conf/vhost下相应的.conf文件
 i vhost下相应的.conf文件 开始修改
 修改完之后，按ESC，再输入 :wq保存退出。
- 
+
 原代码如下：server { listen 80; server_name www.banyou001.com banyou001.com; index index.html index.htm index.php default.html default.htm default.php; root /var/www/html/www.banyou001.com; include none.conf; location ~ .*\.(php|php5)?$ { fastcgi_pass unix:/tmp/php-cgi.sock; fastcgi_index index.php; include fcgi.conf; } location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ { expires 30d; } location ~ .*\.(js|css)?$ { expires 12h; } access_log off; }  
 修改为：server { listen 80; server_name www.banyou001.com;（#这里去除banyou001.com） index index.html index.htm index.php default.html default.htm default.php; root /var/www/html/www.banyou001.com; include none.conf; location ~ .*\.(php|php5)?$ { fastcgi_pass unix:/tmp/php-cgi.sock; fastcgi_index index.php; include fcgi.conf; } location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ { expires 30d; } location ~ .*\.(js|css)?$ { expires 12h; } access_log off; } (这里添加以下代码) server { server_name banyou001.com; rewrite ^(.*) http://www.banyou001.com$1 permanent; }  
 最后结果代码如下：server { listen 80; server_name www.banyou001.com; index index.html index.htm index.php default.html default.htm default.php; root /var/www/html/www.banyou001.com; include none.conf; location ~ .*\.(php|php5)?$ { fastcgi_pass unix:/tmp/php-cgi.sock; fastcgi_index index.php; include fcgi.conf; } location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ { expires 30d; } location ~ .*\.(js|css)?$ { expires 12h; } access_log off; } server { server_name banyou001.com; rewrite ^(.*) http://www.banyou001.com$1 permanent; }  
@@ -112,11 +114,11 @@ the configuration file /usr/local/nginx/conf/nginx.conf syntax is okconfiguratio
 404页面设置完成，一定要检查是否正确。http头信息返回的一定要是404状态。这个可以通过服务器头部信息检查工具进行检查。
 404页面不要自动跳转，让用户来决定去向。
 自定义的404页面必须大于512字节，否则可能会出现IE默认的404页面。
- 
- 
+
+
 LNMP 优化、配置（包括函数的开启，权限的配置） 
- 
- 
+
+
 函数的开启 
 目前LNMP 0.9禁用了部分危险函数： 
 passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,pfsockopen,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket,fsockopen 

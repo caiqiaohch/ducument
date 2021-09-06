@@ -1,4 +1,5 @@
-date命令的帮助信息
+# date命令的帮助信息
+
  [root@localhost source]# date --help
 用法：date [选项]... [+格式]
 　或：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]

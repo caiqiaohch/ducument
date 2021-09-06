@@ -1,4 +1,4 @@
-psd2ugui将psd中的文件直接导出到unity中
+# psd2ugui将psd中的文件直接导出到unity中
 
 PSD2UGUI-master   点击打开链接 根据psd导出的xml然后在unity中使用（经国人修改）
 

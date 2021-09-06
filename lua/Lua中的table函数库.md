@@ -1,4 +1,4 @@
-Lua中的table函数库
+# Lua中的table函数库
 
 table.concat(table, sep,  start, end)
 
@@ -70,6 +70,7 @@ gamma, delta, beta, alpha
 
 用类似的原理还可以写出更加复杂的排序函数. 例如, 有一个table存有工会三名成员的姓名及等级信息:
 
+```
 guild = {}
 
 table.insert(guild, {
@@ -89,12 +90,14 @@ table.insert(guild, {
 　class = "Warlock",
 　level = 40,
 })
+```
 
 
 对这个table进行排序时, 应用以下的规则: 按等级升序排序, 在等级相同时, 按姓名升序排序.
 
 可以写出这样的排序函数:
 
+```
 function sortLevelNameAsc(a, b)
 　if a.level == b.level then
 　　return a.name < b.name
@@ -102,6 +105,7 @@ function sortLevelNameAsc(a, b)
 　　return a.level < b.level
 　end
 end
+```
 
 测试功能如下:
 

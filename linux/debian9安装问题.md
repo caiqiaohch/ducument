@@ -1,4 +1,4 @@
-**debian9安装问题**
+# **debian9安装问题**
 
 aws磁盘扩展
 
@@ -15,7 +15,7 @@ ssh-keygen -e -f andor.pem > andor.pem.pub
 
 
 $chmod 400 andor.pem
- 
+
 $ ssh-keygen -e -f andor.pem > andor.pem.pub
 
 sudo -i

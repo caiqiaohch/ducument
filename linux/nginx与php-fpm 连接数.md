@@ -1,4 +1,4 @@
-nginx与php-fpm 连接数
+# nginx与php-fpm 连接数
 
 
 Apache连接请求机制

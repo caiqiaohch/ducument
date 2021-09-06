@@ -1,4 +1,4 @@
-Debian/Ubuntu修改ulimit
+# Debian/Ubuntu修改ulimit
 
 使用ulimit -a 可以查看当前系统的所有限制值，使用ulimit -n 可以查看当前的最大打开文件数。
 新装的linux默认只有1024，当作负载较大的服务器时，很容易遇到error: too many open files。因此，需要将其改大。
