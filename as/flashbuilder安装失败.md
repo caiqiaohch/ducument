@@ -1,4 +1,4 @@
-flashbuilder安装失败
+# flashbuilder安装失败
 
 使用AdobeCreativeCloudCleanerTool.exe进行清理
 在C盘下搜索Adobe删除文件夹，删除C:\Program Files (x86)\Common Files下的Adobe文件夹

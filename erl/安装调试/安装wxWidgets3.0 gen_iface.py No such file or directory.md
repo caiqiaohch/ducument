@@ -1,4 +1,4 @@
-安装wxWidgets3.0 gen_iface.py:No such file or directory
+# 安装wxWidgets3.0 gen_iface.py:No such file or directory
 
 If you receive weird errors during compiling, or running wx-config after installing, it might be because the line endings of the files are in DOS format.
 cd ./src/stc && ./gen_iface.py

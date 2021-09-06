@@ -1,4 +1,5 @@
-1 安装失败的手动安装（源码安装 Erlang）
+# 1 安装失败的手动安装（源码安装 Erlang）
+
 1.0 下载
 wget http://erlang.org/download/otp_src_20.0.tar.gz
 1.1 使用yum安装下必须的配件：

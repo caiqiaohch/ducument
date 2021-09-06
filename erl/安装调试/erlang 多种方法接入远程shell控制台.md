@@ -1,3 +1,5 @@
+# erlang 多种方法接入远程shell控制台
+
 erlang shell是用户与 erlang 运行时系统交互的界面程序。事实上，erlang VM的运行不依赖任何shell，只要在启动的时候添加参数detached就可以脱离终端。
 -detached
 
@@ -73,7 +75,6 @@ Eshell V5.10.3 (abort with ^G)
 User switch command 
 --> q
 ```
-
 
 Remsh 模式
 Remsh和 JCL 模式很类似，但是调用方式不同的机制。使用这种机制，JCL 模式的所有 操作步骤都可以被绕过，只需像下面这样启动 shell，对于长名字：

@@ -1,4 +1,4 @@
- tail
+#  tail
 
 在centos 或者说是在 linux 系统中，例如 tomcat 或者是 ngixn 的log 日志等等
 

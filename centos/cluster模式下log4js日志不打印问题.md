@@ -1,4 +1,4 @@
-pm2 cluster模式下log4js日志不打印问题
+# pm2 cluster模式下log4js日志不打印问题
 
 上礼拜第一次使用pm2的cluster模式，因为我的是node，利用pm2的cluster模式比较简单，采坑采坑；
 

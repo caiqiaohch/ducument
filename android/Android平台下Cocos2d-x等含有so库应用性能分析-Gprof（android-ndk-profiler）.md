@@ -1,4 +1,4 @@
-Android平台下Cocos2d-x等含有so库应用性能分析-Gprof（android-ndk-profiler）
+# Android平台下Cocos2d-x等含有so库应用性能分析-Gprof（android-ndk-profiler）
 
 前几天在工作中，解决了一个cpu占用率高的问题，尝试过各种方法，因为刚接手项目代码不熟，所以准备依赖于工具解决，虽然最终android-ndk-profiler依然没有解决我的问题，但是我觉得这仍旧是一个比较好的工具，所以准备分享给大家，网上的使用方法不是很全面，在使用过程中依旧遇到了些问题，我在这里做些总结。
 
@@ -30,10 +30,10 @@ android-ndk-profiler 模块的源代码在 GitHub 上面，首先要把模块�
 /*  Android NDK doesn't have its own ucontext.h */
 #ifndef ucontext_h_seen
 #define ucontext_h_seen
- 
+
 #include <asm/sigcontext.h>       /* for sigcontext */
 #include <asm/signal.h>           /* for stack_t */
- 
+
 typedef struct ucontext {
 	unsigned long uc_flags;
 	struct ucontext *uc_link;
@@ -41,7 +41,7 @@ typedef struct ucontext {
 	struct sigcontext uc_mcontext;
 	unsigned long uc_sigmask;
 } ucontext_t;
- 
+
 #endif
 2.Android.mk
 打开 proj.android/jin/Android.mk 文件
@@ -50,20 +50,20 @@ typedef struct ucontext {
 
 
 LOCAL_PATH := $(call my-dir)
- 
+
 include $(CLEAR_VARS)
- 
+
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d-x/external/android-ndk-profiler)
 LOCAL_MODULE := cocos2dlua_shared
- 
+
 LOCAL_CFLAGS := -pg
 LOCAL_MODULE_FILENAME := libcocos2dlua
- 
+
 LOCAL_SRC_FILES := \
 ../../Classes/AppDelegate.cpp \
 ../../Classes/ide-support/SimpleConfigParser.cpp \
 hellolua/main.cpp
- 
+
 LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/../../../cocos2d-x/external/android-ndk-profiler \
 $(LOCAL_PATH)/../../Classes/protobuf-lite \
@@ -71,25 +71,25 @@ $(LOCAL_PATH)/../../Classes/runtime \
 $(LOCAL_PATH)/../../Classes \
 $(LOCAL_PATH)/../../../cocos2d-x/external \
 $(LOCAL_PATH)/../../../cocos2d-x/tools/simulator/libsimulator/lib
- 
+
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
- 
+
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END
- 
+
 LOCAL_STATIC_LIBRARIES := cocos2d_lua_static
 LOCAL_STATIC_LIBRARIES += cocos2d_simulator_static
 LOCAL_STATIC_LIBRARIES += android-ndk-profiler
- 
+
 # _COCOS_LIB_ANDROID_BEGIN
 # _COCOS_LIB_ANDROID_END
- 
+
 include $(BUILD_SHARED_LIBRARY)
- 
+
 $(call import-module, android-ndk-profiler)
 $(call import-module,scripting/lua-bindings/proj.android)
 $(call import-module,tools/simulator/libsimulator/proj.android)
- 
+
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN
 # _COCOS_LIB_IMPORT_ANDROID_END
 
@@ -135,7 +135,7 @@ libcocos2dlua.so 这个 so 文件会根据你的 Cocos2d-x 项目的类型不�
 
 
 4.编译打debug包
- 
+
 
 编译失败：
 
@@ -147,7 +147,7 @@ libcocos2dlua.so 这个 so 文件会根据你的 Cocos2d-x 项目的类型不�
 
 LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/../../../cocos2d-x/external/android-ndk-profiler \
- 
+
 
 2.
 ucontext_t 不识别。 ucontext_t这个是在 ndk里面

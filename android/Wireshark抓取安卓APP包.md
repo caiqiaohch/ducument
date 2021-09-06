@@ -1,7 +1,7 @@
-Wireshark抓取安卓APP包
+# Wireshark抓取安卓APP包
 
 演示使用抓包工具wireshark分析手机lol盒子新闻列表请求地址
- 
+
 wireshark是一款非常强大的开源免费的网络封包分析软件，使用它可以捕获各种网络封包，显示封包的详细信息。
 wireshark是一款电脑软件，如何使用它来捕获手机网络数据呢？
 wireshark的抓包原理是使用WinPCAP作为接口，直接与网卡进行数据报文交换。我们只需要让手机通过电脑网卡传输数据即可，这里推荐使用360免费wifi。
@@ -24,7 +24,7 @@ Host: box.dwstatic.com\r\n
 我们可以使用浏览器尝试访问这个url，看看是不是我们需要的数据：
 
 [{"type":"newsWithHeader","tag":"headlineNews","name":"\u5934\u6761"},{"type":"news","tag":"newsVideo","name":"\u89c6\u9891"},{"type":"news","tag":"upgradenews","name":"\u8d5b\u4e8b"},{"type":"album","tag":"beautifulWoman","name":"\u9753\u7167"},{"type":"album","tag":"jiongTu","name":"\u56e7\u56fe"},{"type":"album","tag":"wallpaper","name":"\u58c1\u7eb8"}]
- 
+
 
 
 格式是json的，经过usc2→ansi转码后：
@@ -38,7 +38,7 @@ Host: box.dwstatic.com\r\n
 http://box.dwstatic.com/apiNewsList.php?action=l&newsTag=headlineNews&p=1
 
 得到数据经过解析和格式化后：
- 
+
 {
     "totalRecord": "11225",
     "totalPage": 449,
@@ -257,7 +257,7 @@ http://box.dwstatic.com/apiNewsList.php?action=l&newsTag=headlineNews&p=1
         }
     ]
 }
- 
+
 没错了，正是我们所需要的数据。
 
 http://box.dwstatic.com/apiNewsList.php?action=l&newsTag=headlineNews&p=1

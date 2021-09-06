@@ -1,4 +1,4 @@
-CentOS6下编译Erlang R15B with wxWidgets
+# CentOS6下编译Erlang R15B with wxWidgets
 
 如果不需要安装 wxWidgets 的话，很简单， ./configure & make & make install 。但是装起来后，发现 Erlang 的 debugger 无法启动，显示“ ERROR: Could not find 'wxe_driver.so' in: /usr/local/lib/erlang/lib/wx-0.99.1/priv ”，虽说不使用 debugger 也问题不大，不过有时候调个小程序什么的还是不方便，随决定把 wxWidgets 安装一下。
 

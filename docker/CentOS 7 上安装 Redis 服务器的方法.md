@@ -1,3 +1,5 @@
+# CentOS 7 上安装 Redis 服务器的方法
+
 1、进入Redis官网获取Redis最新稳定版下载地址，通过wget命令下载 Redis 源代码。
 Redis编译
 1、通过tar -xvf redis-3.0.2.tar.gz命令解压下载Redis源码压缩包redis-3.0.2.tar.gz；
@@ -22,19 +24,19 @@ Redis服务查看、开启、关闭
         sudo make  
         sudo make install   
     以上安装 tcl 完成
-
+    
     2. 执行./utils/install_server.sh
-
+    
      cd utils
-
+    
     ./install_server.sh  报服务器安装到本地机上
-
+    
      报了个这个错
-
+    
     ./install_server.sh: line 178: update-rc.d: command not found
-
+    
     exists, process is already running or crashed 第一种解决方案：
-
+    
     按着错误提示，我们对/etc/init.d/redis_6379进行修改，只有要“\n”删除并且输入回车，修改完毕后，保存
 
    第二种解决方案：

@@ -1,3 +1,5 @@
+# install-xdebug
+
 Download xdebug-2.6.1.tgz , you can use wget ( wget -O ~/downlaods/xdebug-2.6.1.tgz http://xdebug.org/files/xdebug-2.6.0.tgz )
 Unpack the downloaded file with tar -xvzf xdebug-2.6.1.tgz
 Run: cd xdebug-2.6.1

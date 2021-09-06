@@ -1,4 +1,4 @@
-Erlang安装时加载openssl的libcrypto.a失败,执行crypto:start()报错的解决方案
+# Erlang安装时加载openssl的libcrypto.a失败,执行crypto:start()报错的解决方案
 
 
 刚开始碰到这个问题的时候，从网上找的例子。搞了半天不好使，后来发现了原因，主因是自己对linux认知不够，只有发布服务、查看日志的基本功。
@@ -12,7 +12,7 @@ Erlang安装时加载openssl的libcrypto.a失败,执行crypto:start()报错的�
 错误信息：
 
 [plain] view plain copy
- 
+
 Eshell V5.10.3  (abort with ^G)  
 1> crypto:start().  
 ** exception error: undefined function crypto:start/0  
@@ -21,8 +21,8 @@ Eshell V5.10.3  (abort with ^G)  
 Unable to load crypto library. Failed with error:  
 "load_failed, Failed to load NIF library: '/usr/local/lib/erlang/lib/crypto-3.1/priv/lib/crypto.so: undefined symbol: EC_GROUP_new_curve_GF2m'"  
 OpenSSL might not be installed on this system.  
-  
-  
+
+
 =ERROR REPORT==== 12-Mar-2014::17:09:15 ===  
 The on_load function for module crypto returned {error,  
                                                  {load_failed,  
@@ -43,7 +43,7 @@ The on_load function for module crypto returned {error,  
     vim Makefile
 
 [cpp] view plain copy
- 
+
 CC= gcc    
 CFLAG= -fPIC -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -Wa,--noexecstack -m64 -DL_ENDIAN -DTERMIO -O3 -Wall -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DAES_ASM -DVPAES_ASM -DBSAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM   
 
@@ -58,7 +58,7 @@ CFLAG= -fPIC -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -Wa
 9、运行刚才安装的erlang
     /opt/erlang/bin/erl
 [plain] view plain copy
- 
+
 Eshell V5.10.3  (abort with ^G)  
 1> crypto:start().  
 ok  

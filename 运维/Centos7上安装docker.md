@@ -1,4 +1,4 @@
-Centos7上安装docker
+# Centos7上安装docker
 
 Centos7上安装docker
 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。
@@ -37,7 +37,7 @@ $ yum list docker-ce --showduplicates | sort -r
 
 $ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版17.12.0
 $ sudo yum install <FQPN>  # 例如：sudo yum install docker-ce-17.12.0.ce
- 
+
 
 8、启动并加入开机启动
 
@@ -48,7 +48,7 @@ $ sudo systemctl enable docker
 $ docker version
 
 
- 
+
 
  二、问题
 1、因为之前已经安装过旧版本的docker，在安装的时候报错如下：
@@ -68,7 +68,7 @@ $ sudo yum erase docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64
 3、再次安装docker
 
 $ sudo yum install docker-ce
- 
+
 
 分类: docker
 好文要顶 关注我 收藏该文  

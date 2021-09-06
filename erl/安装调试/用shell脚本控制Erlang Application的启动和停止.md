@@ -1,9 +1,9 @@
-用shell脚本控制Erlang Application的启动和停止
+# 用shell脚本控制Erlang Application的启动和停止
 
 一般就用下面两个参数
 ./server.sh init
 ./server.sh shutdown
- 
+
 shell脚本我不是很熟，看看各位有没有改进的地方 
 #!/bin/sh
 ##
@@ -19,7 +19,7 @@ case $1 in
     $ERL -boot game_server-1 -config sasl -sname chatserver01 \
          -detached                                    
     ;;
- 
+
   start)
     echo "Starting Server..."
     $ERL -noshell -sname manage \
@@ -32,7 +32,7 @@ case $1 in
            -eval 'server_manage:stop("chatserver01@NBCTC-5-160","game_chat_server")' \
            -s init stop
     ;;
- 
+
   shutdown)
     echo "Shutdown Server..."
     $ERL -noshell -sname manage \
@@ -43,7 +43,7 @@ case $1 in
     echo "Usage: $0 {init|start|stop|shutdown}"
     exit 1
 esac
- 
+
 exit 0
 发现命令行 -s MODDULE Fun arg 这样的方式不好使，就改成 -eval的了
 server_manage.erl 代码：

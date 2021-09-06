@@ -1,4 +1,4 @@
-centOS下安装python3 和 pip: command not found
+# centOS下安装python3 和 pip: command not found
 
 
 在更新python3的时候会自动安装pip3，但是安装完成后，pip -V发现出错：command not found，找了好久，发现在建立软连接的时候路径写错了。
@@ -80,7 +80,7 @@ pip: command not found
 
 //=================================python3中pip3安装出错,找不到SSL的解决方式======
 pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
- 
+
 Could not fetch URL https:*******: There was a problem confirming the ssl certificate: 
 Can't connect to HTTPS URL because the SSL module is not available. - skipping
 本人安装Python3.6的操作如下：
@@ -88,16 +88,16 @@ Can't connect to HTTPS URL because the SSL module is not available. - skipping
 
 1.wget获取安装包：
   wget http://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz
- 
+
 2.解压安装包：
   tar -xvzf Python-3.6.2.tgz
- 
+
 3.检查安装平台属性，系统是否有编译时所需要额库，以及库的版本是否满足编译需要
   ./configure
- 
+
 4.编译源码
   make
- 
+
 5.成功编译之后，安装
   sudo make install
 在安装完之后，我们希望用pip3命令来安装numpy。首先，用如下命令安装pip3:

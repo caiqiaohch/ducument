@@ -1,4 +1,4 @@
-dotnet 搭建项目
+# dotnet 搭建项目
 
 https://www.cnblogs.com/zhuanghamiao/p/VSCode.html
 直接进入正题，通过运行工具打开终端命令，进入到将要创建项目的目录

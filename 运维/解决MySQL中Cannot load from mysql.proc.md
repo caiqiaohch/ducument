@@ -1,4 +1,4 @@
-解决MySQL中Cannot load from mysql.proc.
+# 解决MySQL中Cannot load from mysql.proc.
 
 
 2015-08-18 18:58:10

@@ -1,4 +1,5 @@
-vmware共享文件夹
+# vmware共享文件夹
+
 环境： 
 
 VMware Workstation 11.0
@@ -24,9 +25,9 @@ vmhgfs-fuse share
 如果要在开机是自动挂载共享文件夹，则需更改/etc/fstab文件。打开文件后在最后添加：
 
 .host:/         /mnt/hgfs               fuse.vmhgfs-fuse allow_other,defaults   0       0
- 
 
- 
+
+
 
 在debian jessie中的方法不一样！
 

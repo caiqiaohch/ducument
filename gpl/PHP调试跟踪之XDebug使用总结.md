@@ -1,4 +1,4 @@
-PHP调试跟踪之XDebug使用总结
+# PHP调试跟踪之XDebug使用总结
 
 PHP调试跟踪之XDebug使用总结：
 

@@ -1,4 +1,4 @@
-扒尽手游的底裤——Cocos2dx与LuaJIT完全解密
+# 扒尽手游的底裤——Cocos2dx与LuaJIT完全解密
 
 
 编译修改Luajit-lang-toolkit
@@ -264,35 +264,35 @@ int main(int argc, char** argv) {
     assert(argc > 1, "usage: decrypt [encrypted_png]\n");
 
     Image *img = new Image();
-
+    
     FILE *f = fopen(argv[1], "rb");
     assert(f != NULL, "File not exists!");
-
+    
     fseek(f, 0, SEEK_END);
     long fsize = ftell(f);
     printf("Source file size: %ld\n", fsize);
     fseek(f, 0, SEEK_SET);
-
+    
     char *buf = (char *)malloc(fsize + 1);
     fread(buf, fsize, 1, f);
     buf[fsize] = 0;    
     fclose(f);
     assert(!memcmp(buf, "img.libla", 9), "File already decrypted~~\n");
-
+    
     void* handle = dlopen("/data/local/tmp/libcocos2dlua.so", RTLD_LAZY);
     assert(handle != NULL, "libcocos2dlua.so missing or corrupted!\n");
-
+    
     initWithMPIData_t initWithMPIData_ptr = (initWithMPIData_t) dlsym(handle, initWithMPIData_mangled);
-
+    
     assert(initWithMPIData_ptr != NULL, "Image::initWithMPIData not found\n");
     printf("Image::initWithMPIData found at: %p\n", initWithMPIData_ptr);
-
+    
     initWithMPIData_ptr(img, buf, fsize);
     printf("Decrypted image %d x %d, raw size %d.\n",
         img->_width, img->_height, img->_dataLen);
-
+    
         // 留给大家的思考题
-
+    
     return 0;
 }
 push到手机上运行一下。顺便一提，1.out.png和1.png的大小是完全一样的。说明这个算法完全可逆。就是我懒而已……
@@ -395,13 +395,13 @@ def main():
         f.seek(num_bytecode*4, 1)   # skip bytecode
 
         kgcs = []
-
+    
         for _ in range(num_vars):       # read one kgc per time
             type_kgc = f.read(1)[0]
             assert type_kgc == 1, \
                 "Unsupported variable {} at {}".format(type_kgc, f.tell())
             print("== reading new one from", f.tell())
-
+    
             narray = readULEB128(f)
             nhash = readULEB128(f)
             array = []
@@ -413,22 +413,22 @@ def main():
                 val = readKtabk(f)
                 print("Reading key: ", key, "val:", val)
                 hashes[key] = val
-
+    
             kgcs.append(hashes or array)  # a ktab may only contain one
-
+    
         assert f.tell() - prototype_start_pos == length_total, \
             "What happened?? file corrupted? at {}".format(f.tell())
-
+    
         assert f.read(1)[0] == 0, "More prototypes following, I'm tired"
-
+    
         print("Dump success!")
-
+    
     with open("dumpinfo.csv", 'w') as csvfile:
         csvfile.write('\ufeff')
         writer = csv.DictWriter(csvfile, sorted(kgcs[0].keys()))
         writer.writeheader()
         writer.writerows(kgcs)
-
+    
         print("dumped into dumpinfo.csv")
 
 if __name__ == '__main__':

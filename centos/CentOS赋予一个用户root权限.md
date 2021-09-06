@@ -1,4 +1,4 @@
-CentOS赋予一个用户root权限
+# CentOS赋予一个用户root权限
 
 1、添加用户，首先用adduser命令添加一个普通用户，命令如下：
 

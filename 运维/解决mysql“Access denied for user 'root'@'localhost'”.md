@@ -1,4 +1,4 @@
-解决mysql“Access denied for user 'root'@'localhost'”
+# 解决mysql“Access denied for user 'root'@'localhost'”
 
     # mysql -uroot -p
     

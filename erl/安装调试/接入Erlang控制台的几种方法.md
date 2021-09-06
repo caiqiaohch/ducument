@@ -1,4 +1,4 @@
-接入Erlang控制台的几种方法
+# 接入Erlang控制台的几种方法
 
 rpc:call(Node, Mod, Func, [Arg1, Arg2, ..., ArgN])会在Node上执行一次远程过程调用。调用的函数是Mod:Func(Arg1, Arg2, ..., ArgN)。
 

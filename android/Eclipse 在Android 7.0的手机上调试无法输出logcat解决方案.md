@@ -1,4 +1,5 @@
-Eclipse 在Android 7.0的手机上调试无法输出logcat解决方案
+# Eclipse 在Android 7.0的手机上调试无法输出logcat解决方案
+
  最近公司很多项目都上了Android 7.0 的系统，因为web 项目的开发并行的原因，所以一直没有切换到AS 上来，发现使用eclipse 的时候无法输出logcat ,通过网上google 发现了解决方案
 
 需要更新ADT，这个ADT 并不是google 官方的。
@@ -24,7 +25,7 @@ Android SDK Build-tools：28.0.3（dx.jar使用的是25.0.3的）
 
 Android Platform Version：API28:Android 9.0（pie）revision 6
 
- 
+
 解决方案
 1、在SDK安装目录\tools\lib文件下找到ddmlib.jar
 
@@ -41,7 +42,7 @@ Android Platform Version：API28:Android 9.0（pie）revision 6
 
  
 
- 
+
 参考资料
 
  Android 7.0及以上的设备无法在Eclipse上打印日志

@@ -1,4 +1,4 @@
-Centos 使用alias设置别名，永久生效
+# Centos 使用alias设置别名，永久生效
 
 alias 是一个设置别名的命令
 

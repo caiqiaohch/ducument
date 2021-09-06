@@ -1,4 +1,4 @@
-Linux 简单shell创建自己的守护进程，自动重启，纪录进程运行状态，日志切割压缩
+# Linux 简单shell创建自己的守护进程，自动重启，纪录进程运行状态，日志切割压缩
 
 对于守护进程管理、自动重启、记录log，有一个很好用的进程管理工具 supervisord 。它可以说简单易用，且功能强大。但是对于我的部署需求来说还是过于繁琐，且没有搞定用它如何记录进程状态。
 
@@ -16,12 +16,14 @@ pgmctl.sh
     #run:  /pathto/pgmctl.sh [start &|stop|restart &]
      
     #author: color_wind
-     
-     
+
+
+​     
     # shell dir name
     PAT=`dirname $0`
-     
-     
+
+
+​     
     # set parameters 
     CMD="$PAT/pgmctl"
     LOG="$PAT/logs/pgmctl.log"
@@ -48,8 +50,9 @@ pgmctl.sh
     }
      
     # --------------------------------------------------
-     
-     
+
+
+​     
     echo "$CMD $1"
      
     case "$1" in
@@ -97,10 +100,11 @@ pgmctl.sh
     		break
     	fi
     done
+
  
+
  
- 
- 
+
 
 
 启动：./pgmctl.sh  start  &

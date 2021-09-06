@@ -1,5 +1,7 @@
-typescript
+# typescript
+
 https://www.runoob.com/typescript/ts-operators.html
+
 ## 变量
 const getValue = () => {
   return 0
@@ -25,7 +27,7 @@ function buildName(firstName: string, lastName?: string) {
     else
         return firstName;
 }
- 
+
 let result1 = buildName("Bob");  // 正确
 let result2 = buildName("Bob", "Adams", "Sr.");  // 错误，参数太多了
 let result3 = buildName("Bob", "Adams");  // 正确
@@ -63,7 +65,7 @@ function addNumbers(...nums:number[]) {
  } 
  addNumbers(1,2,3) 
  addNumbers(10,10,10,10,10)
- 
+
 ## 匿名函数自调用
 匿名函数自调用在函数后使用 () 即可： 
 TypeScript
@@ -114,7 +116,7 @@ console.log(foo(100)); //输出结果为 110
 110
 函数是一个语句块：
 ( [param1, parma2,…param n] )=> {
- 
+
     // 代码块
 }
 实例
@@ -227,24 +229,24 @@ interface IPerson {
     lastName:string, 
     sayHi: ()=>string 
 } 
- 
+
 var customer:IPerson = { 
     firstName:"Tom",
     lastName:"Hanks", 
     sayHi: ():string =>{return "Hi there"} 
 } 
- 
+
 console.log("Customer 对象 ") 
 console.log(customer.firstName) 
 console.log(customer.lastName) 
 console.log(customer.sayHi())  
- 
+
 var employee:IPerson = { 
     firstName:"Jim",
     lastName:"Blakes", 
     sayHi: ():string =>{return "Hello!!!"} 
 } 
- 
+
 console.log("Employee  对象 ") 
 console.log(employee.firstName) 
 console.log(employee.lastName)
@@ -253,14 +255,14 @@ console.log(employee.lastName)
 接口中我们可以将数组的索引值和元素设置为不同类型，索引值可以是数字或字符串。
 TypeScript
 interface namelist { 
-   [index:number]:string 
+[index:number]:string
 } 
- 
+
 var list2:namelist = ["John",1,"Bran"] // 错误元素 1 不是 string 类型
 interface ages { 
-   [index:string]:number 
+[index:string]:number
 } 
- 
+
 var agelist:ages; 
 agelist["John"] = 15   // 正确 
 agelist[2] = "nine"   // 错误
@@ -289,12 +291,12 @@ class Car {
       console.log("函数中显示发动机型号  :   "+this.engine) 
    } 
 } 
- 
+
 // 创建一个对象
 var obj = new Car("XXSY1")
 // 访问字段
 console.log("读取发动机型号 :  "+obj.engine)  
- 
+
 // 访问方法
 obj.disp()
 编译以上代码，得到以下 JavaScript 代码：
@@ -332,17 +334,17 @@ TypeScript
 interface ILoan { 
    interest:number 
 } 
- 
+
 class AgriLoan implements ILoan { 
    interest:number 
    rebate:number 
-   
+
    constructor(interest:number,rebate:number) { 
       this.interest = interest 
       this.rebate = rebate 
    } 
 } 
- 
+
 var obj = new AgriLoan(10,1) 
 console.log("利润为 : "+obj.interest+"，抽成为 : "+obj.rebate )
 
@@ -367,10 +369,10 @@ function addPoints(p1:IPoint,p2:IPoint):IPoint {
     var y = p1.y + p2.y 
     return {x:x,y:y} 
 } 
- 
+
 // 正确
 var newPoint = addPoints({x:3,y:4},{x:5,y:1})  
- 
+
 // 错误 
 var newPoint2 = addPoints({x:1},{x:4,y:3})
 
@@ -398,7 +400,7 @@ TestShape.ts 文件代码：
 import shape = require("./IShape"); 
 import circle = require("./Circle"); 
 import triangle = require("./Triangle");  
- 
+
 function drawAllShapes(shapeToDraw: shape.IShape) {
    shapeToDraw.draw(); 
 } 
