@@ -1,4 +1,4 @@
-Visual Studio 使用的 ProjectTypeGuids
+# Visual Studio 使用的 ProjectTypeGuids
 
   Visual Studio 所使用的 *.sln,*.csproj,*.vbproj 等文件表示项目类型的 GUID 列表。
   对于分析项目信息很有用。
@@ -50,7 +50,7 @@ ProjectTypeGuids和Project 节点说明
 　　　E3E379DF-F4C6-4180-9B81-6769533ABE47   Asp.net MVC 4.0
 
     　 349c5851-65df-11da-9384-00065b846f21　　　Web Application　
-
+    
     　fae04ec0-301f-11d3-bf4b-00c04f79efbc      Windows C#
 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSoft.Application", "JSoft.Application\JSoft.Application.csproj", "{F2035EE2-B73D-4FB8-A433-CAB465DE6A2A}"
