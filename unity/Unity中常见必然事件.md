@@ -1,0 +1,9 @@
+# Unity中常见必然事件
+
+Awake 脚本实例被创建时调用，用于游戏对象的初始化，注意Awake的执行早于所有脚本的Start函数。
+Start Update的函数第一次运行之前调用，用于游戏对象的初始化。
+Update 每帧调用一次，用于更新游戏场景和状态（和物理状态有关的更新应放在fixedUpdate里）
+FixedUpdate 每个固定物理事件间隔（Physics Time Step）调用一次，用于物理状态更新
+LateUpdate 每帧调用一次（在Update调用之后）用于更新游戏场景和状态，和相机有关的更新一般放在这里
+
+D:\Program Files\Unity Hub\resources\app.asar
