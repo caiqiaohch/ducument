@@ -63,7 +63,8 @@ Eshell V6.1  (abort with ^G)
 
 很可能是
 
-1  {shell,start,[init]}
+```
+ 1  {shell,start,[init]}
  2 {sa2@shawin7nb381,shell,start,[]}
 
  3 {sa1@WS100,shell,start,[]}
@@ -73,6 +74,7 @@ Eshell V6.1  (abort with ^G)
  5 {sa1@WS101,shell,start,[]}
 
  6* {sa1@WS102,shell,start,[]}
+```
 
 你如果要连接到第三节点的话，直接 输入 c 6 回车就行了。
 
