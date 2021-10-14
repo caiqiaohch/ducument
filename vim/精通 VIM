@@ -893,6 +893,12 @@ VIM 正常模式下，主要进行的操作有光标的移动，复制文本，�
 
 `ndd` 删除光标处开始的 n 行
 
+删除3-5行：
+
+```text
+3,5d
+```
+
 `d$` 删除光标到本行的结尾
 
 `dH` 删除屏幕显示的第一行文本到光标所在的行
@@ -1051,12 +1057,12 @@ g：表示是否把每一行的多个匹配结果都加入
 j：表示是否搜索完后定位到第一个匹配位置
 vimgrep /pattern/ %           在当前打开文件中查找
 vimgrep /pattern/ *             在当前目录下查找所有
-vimgrep /pattern/ **            在当前目录及子目录下查找所有
+vimgrep /pattern/ **            在当前目录及子目录下查找所有::
 vimgrep /pattern/ *.c          查找当前目录下所有.c文件
 vimgrep /pattern/ **/*         只查找子目录
 
 cn                                          查找下一个
-cp                                           查找上一个
+cp                                           查找上一个:
 copen                                    打开quickfix
 cw                                          打开quickfix
 cclose                                   关闭qucikfix
@@ -1109,3 +1115,120 @@ ctrl+^
 :help vimgrep
 
 来查看。
+
+一.文件浏览器
+
+:edit .    .代表当前目录，可以指定任意目录；
+
+显示文件列表后可以通过移动j,k移动选择，按
+
+<Enter>    是在当前窗口打开选择的文件
+
+o          打开一个水平分隔的窗口显示文件
+
+v          打开一个垂直分隔的窗口显示文件
+
+t          在一个新标签页中打开文件
+
+
+
+二.工作目录(局部窗口工作目录)
+
+当你打开多个窗口时，可以通过:lcd命令指定当前窗口的工作目录，其他共享目录不影响
+
+
+
+三.查找文件
+
+set path+=./路径    设置文件的查找路径
+
+gf    并在当前目录下面查找当前光标下的文件并打开,如果是完整路径的话，也能够找到；
+
+
+
+:find 文件名    查找文件并打开；
+
+::::
+
+Vim列(块)编辑模式:
+
+注意：是vim可以做列模式编辑，而vi不能做列模式，我一开始没有分清，导致我使用vi做了变天都没有成功。
+使用案例：多行注释
+
+1.在nomal模式下按下Ctrl+v, 然后选择你要添加的行数（可以直接 行数+G 过去）
+
+2.选择好以后按大写的I ,则光标会自动跳转到所选择行的第一行行首，并会进入到insert模式，可以输入你想要插入的内容。比如“#”
+
+3.输入完你想要插入的数据后，按下Esc键，则你会发现刚刚你选择的行的行首已经插入了你想要的内容。
+
+4.如果你想要删除注释行的“#”，只需要Ctrl+v选中多行的“#”，让后按Delete键删除即可。
+
+一、先查看当前路径
+
+pwd: 查看当前的工作路径
+
+如果路径 不对，可以使用cd进行切换，
+
+cd: 改变vim的当前工作路径，比如说cd ../命令
+
+
+二、创建文件夹
+
+!mkdir mydir
+
+ cd %:p:h 
+
+
+
+## 关于工作路径的快捷键
+
+## 
+
+
+
+cd :               改变vim的当前工作路径 
+lcd：              改变当前窗口的工作路径 
+pwd:              查看当前的工作路径 
+set autochdir:       自动设当前编辑的文件所在目录为当前工作路径
+
+ 
+
+## 设置工作路径 
+
+设我们的源代码放在E:/Source/里，并且这个大型的项目还有很多Project，每个Project都放在以ProjectName命名的文件夹 里。例如我们有Project1，Project2两个项目，放在以Project1和Project2命名的文件夹里。将下面这段代码放在.vimrc 文件里，我们就可以用Chw命名来切换工作目录啦。(注意：自定义命令都必须以大写字母开头。)
+
+
+
+```vbscript
+ let g:Work = "~/tmp"
+ let g:Test = g:Work."/test/"
+ let g:Pt = g:Work."/test/"
+  function Cw(dir)
+     execute ":cd  ".a:dir
+ endfunction
+call Cw(Test)
+```
+
+Vim一启动，就会自动将当前的工作目录切换到E:/Source/。在vim的命令模式下即使用vim打开文件时，可以用
+
+
+
+[文件名.text.~]文件
+备份文件
+默认情况存储到当前文件夹下
+取消备份方法
+1： (直接取消存储)在_vimrc文件中添加 set nobackup
+2： (存储到指定文件夹)在根目录，即_vimrc所在目录下创建一个文件夹，如backup，
+并在_vimrc中添加set backupdir=$Vim\backup
+[文件名.text.un~]文件
+备份撤销步骤，即u,ctrl+r等操作，在下次打开文件依然有效
+默认情况存储到当前文件夹下
+取消备份方法
+1：在_vimrc文件中添加set noundofile
+2： https://blog.csdn.net/weizhl10131729/article/details/78020783.
+[文件名.text.swp]文件
+交换文件，以备不测，如果你正常退出，那么这个这个swp文件将会自动删除，否则保存
+默认情况存储到当前文件夹下
+取消备份方法
+1：在_vimrc文件中添加set noswapfile
+2：https://blog.csdn.net/liuhhaiffeng/article/details/52582948.
