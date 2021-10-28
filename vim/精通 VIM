@@ -1383,3 +1383,26 @@ Vim默认最多只能打开10个标签页。你可以用**set tabpagemax=15**改
 通过**:help tab-page-intro**命令，可以获得关于标签页使用的更多信息。我们甚至可以使用**:tab help tabpage**命令，在新的标签页查看帮助信息。
 
 ![img](https://pic2.zhimg.com/80/v2-7ea7ae5281cb53835ee9fde852127049_720w.png)
+
+
+
+ 熟练的使用ctags仅需记住下面七条命令：（很简单吧，呵呵）
+1． ctags –R * (*c**t**a**g**s*–*R*∗( 为Linux系统Shell提示符)
+\2. $ vi –t tag (请把tag替换为您欲查找的变量或函数名)
+3． ：ts (ts 助记字：tags list, “:”开头的命令为VI中命令行模式命令)
+4． ：tp (tp 助记字：tags preview)—此命令不常用，可以不用记
+5． ：tn (tn 助记字：tags next) —此命令不常用，可以不用记
+6． Ctrl + ]
+7． Ctrl + T 
+
+
+
+# [vim跳转到指定行](https://www.cnblogs.com/sench/p/8675141.html)
+
+在vim中有3中方法可以跳转到指定行（首先按esc进入命令行模式）：
+
+1、ngg/nG （跳转到文件第n行，无需回车）
+
+2、:n （跳转到文件第n行，需要回车）
+
+3、vim +n filename （在打开文件后，跳转到文件的第n行）

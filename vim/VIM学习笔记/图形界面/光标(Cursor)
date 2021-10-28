@@ -1,0 +1,93 @@
+# 光标(Cursor)
+
+[![YYQ](https://pica.zhimg.com/v2-c4432de041354a82800b86e53483c9c7_xs.jpg?source=172ae18b)](https://www.zhihu.com/people/anthony.yuan)
+
+[YYQ](https://www.zhihu.com/people/anthony.yuan)
+
+一个安静的家伙 对大多数事情都没有兴趣
+
+关注他
+
+9 人赞同了该文章
+
+## **光标显示选项**
+
+可以通过以下命令设置guicursor选项，来定义图形界面下的光标显示：
+
+```text
+:set guicursor=mode:style[-highlight],mode:style[-highlight],...
+```
+
+其中，*mode*是以下选项的组合：
+
+n常规模式
+v可视模式ve可视模式但不包括selectiono操作符等待模式i插入模式r替换模式c命令行常规模式ci命令行插入模式cr命令行替换模式sm插入模式下的显示匹配a所有模式horN水平栏，字符高度的N个百分比
+
+
+
+
+
+例如，以下命令会在常规、命令和插入模式下，将光标设置为相当于当前字符50%宽度的方块，并使用ncvCursor组高亮显示：
+
+```text
+:set guicursor=n-c-v:ver50-ncvCursor
+```
+
+而以下命令则启用不闪烁的方块光标，在插入模式下，使用iCursor组高亮显示，而在可视化模式下，则使用vCursor高亮显示组。
+
+```text
+:set guicursor=i:block-iCursor-blinkon0,v:block-vCursor
+```
+
+关于光标显示的更多信息，请使用以下命令查看帮助文档：
+
+```text
+:help guicursor
+```
+
+## **光标颜色**
+
+利用以下命令，可以改变光标的前景色和背景色：
+
+```text
+:highlight Cursor guifg=white guibg=black
+:highlight iCursor guifg=white guibg=steelblue
+```
+
+## **光标行/列**
+
+利用以下命令，使用*CursorLine*组高亮显示光标所在的屏幕行：
+
+```text
+:set cursorline
+```
+
+而利用以下命令，则使用*CursorColumn*组高亮显示光标所在的屏幕列：
+
+```text
+:set cursorcolumn
+```
+
+使用以下命令同时启用光标行和光标列，将显示“十字架”光标，可以准确定位当前位置：
+
+```text
+:set cursorline cursorcolumn
+```
+
+![img](https://pic4.zhimg.com/80/v2-ff4a190f0a8475587571cbc5b6f4e84b_720w.png)
+
+利用以下命令，可以改变光标所在行的颜色：
+
+```text
+:highlight CursorLine guibg=lightblue ctermbg=lightgray
+```
+
+可以使用以下命令，取消高亮显示光标所在的行和列：
+
+```text
+:set nocursorline nocursorcolumn
+```
+
+![img](https://pic2.zhimg.com/80/v2-b8cba3cb6d189392ef68477200985945_720w.png)
+
+编辑于 2017-01-16
