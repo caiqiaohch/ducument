@@ -1,0 +1,117 @@
+# 插件管理器(vim-plug)
+
+[![YYQ](https://pic1.zhimg.com/v2-c4432de041354a82800b86e53483c9c7_xs.jpg?source=172ae18b)](https://www.zhihu.com/people/anthony.yuan)
+
+[YYQ](https://www.zhihu.com/people/anthony.yuan)
+
+一个安静的家伙 对大多数事情都没有兴趣
+
+关注他
+
+16 人赞同了该文章
+
+**[vim-plug](https://link.zhihu.com/?target=https%3A//github.com/junegunn/vim-plug)** 是一个Vim插件管理器，利用异步并行可以快速地安装、更新和卸载插件。它的安装和配置都非常简单，而且在操作过程中会给出很多易读的反馈信息，是一个相当友好精简的插件。
+
+## **安装配置**
+
+1. 下载 [plug.vim](https://link.zhihu.com/?target=https%3A//raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) 文件，根据操作系统不同，放置在以下autoload目录中：
+
+- Linux: ~/.vim/autoload
+- Windows: ~\vimfiles\autoload\plug.vim
+
+\2. 目录结构如下，之后安装的插件将存放在plugged目录中：
+
+![img](https://pic2.zhimg.com/80/v2-d3f9928353a103b1c933fff7b237e62d_720w.jpg)
+
+\3. 在[vimrc](https://link.zhihu.com/?target=http%3A//yyq123.blogspot.com/2012/01/vim-vimrc.html)配置文件中增加*plug-vim*部分，示例如下：
+
+```text
+call plug#begin('~/.vim/plugged')
+" Shorthand notation for plugin
+Plug 'foo/bar'
+call plug#end()
+```
+
+## **配置实例**
+
+```vim
+" plug-vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches junegunn/vim-easy-align
+Plug 'vim-airline/vim-airline'
+Plug 'lilydjwg/colorizer'
+Plug 'kshenoy/vim-signature'
+"Plug 'mattn/gist-vim'
+
+" Any valid git URL is allowed
+"Plug 'junegunn/vim-github-dashboard'
+
+" Multiple Plug commands can be written in a single line using | separators
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+```
+
+## **安装插件**
+
+vim-plug支持源码托管在[GitHub](https://link.zhihu.com/?target=https%3A//github.com/)的插件，你可以在[github.com/vim-scripts/](https://link.zhihu.com/?target=https%3A//github.com/vim-scripts/)上找到[vim官网](https://link.zhihu.com/?target=http%3A//www.vim.org/)里所有插件的镜像。
+
+如果希望安装新插件，首先找到其在[http://github.com](https://link.zhihu.com/?target=http%3A//github.com)的网址，然后将其追加至[vimrc](https://link.zhihu.com/?target=http%3A//yyq123.blogspot.com/2012/01/vim-vimrc.html)配置文件中的`call plug#begin()`和`call plug#end()`之间，最后执行以下命令安装所有引用的插件：
+
+```vim
+:PlugInstall
+```
+
+![img](https://pic4.zhimg.com/80/v2-20ab9574b040e7607cbd220e5cf47103_720w.jpg)
+
+你也可以使用以下命令，指定安装特定的插件：
+
+```text
+:PlugInstall gist-vim 
+```
+
+## **卸载插件**
+
+如果希望卸载插件，请先在[vimrc](https://link.zhihu.com/?target=http%3A//yyq123.blogspot.com/2012/01/vim-vimrc.html)配置文件中注释或者删除对应插件的配置信息，然后再执行以下命令：
+
+```text
+:PlugClean
+```
+
+![img](https://pic3.zhimg.com/80/v2-867fa10631f6e9e2c53587b7416a450a_720w.jpg)
+
+## **更新插件**
+
+使用以下命令，可以更新vim-plug插件自身：
+
+```text
+:PlugUpgrade
+```
+
+使用以下命令，可以批量更新所有已安装的插件：
+
+```text
+:PlugUpdate
+```
+
+![img](https://pic3.zhimg.com/80/v2-191e5d9d036590e8055674e83c211ae2_720w.jpg)
+
+## **插件状态**
+
+使用以下命令，可以查看当前已安装插件的状态信息：
+
+```text
+:PlugStatus
+```
+
+![img](https://pic4.zhimg.com/80/v2-54d03591393c785c34de5033369e94ef_720w.jpg)
+
+
+
+发布于 2019-02-16
