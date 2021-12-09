@@ -16,7 +16,6 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
 
 2.重启Sublime Text，问题解决。
 
-
 建议必备
 Emmet
 
@@ -214,3 +213,15 @@ import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.
 方法介绍完了，接下来进入今天正题，一些有用的Sublime Text 3插件：
 
 注意：安装插件时保持网络畅通，避免插件由于网络原因奔溃
+
+###### 项目配置
+
+{
+	"folders":
+	[
+		{
+			"path": "G:\\share\\shop-server\\game",
+            "folder_exclude_patterns": ["G:\\share\\shop-server\\game\\_build"]
+		}
+	]
+}

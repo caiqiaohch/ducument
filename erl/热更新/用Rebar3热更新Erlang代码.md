@@ -6,29 +6,24 @@
 
 我们将创建一个样例项目，然后学习如何来做代码热更新。这个项目的代码我已经放在这里。让我们用rebar3来创建一个模版项目。
 
-1
+```
 $ rebar3 new release nine9s
+```
+
 现在我们在我们的rebar.config文件里增加cowboy和lager为依赖。
 
-1
-2
-3
-4
+```cmake
 {deps, [
 	{lager, {git, "git://github.com/basho/lager.git", {tag, "2.1.1"}}},
 	{cowboy, {git, "https://github.com/ninenines/cowboy.git", {tag, "2.0.0-pre.1"}}}
 ]}.
+```
+
 为了更加真实的体验，请按如下修改我们的rebar.config。
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
+为了更加真实的体验，请按如下修改我们的rebar.config。
+
+```cmake
 {relx, [
 		{release, {'nine9s', "0.1.0"}, ['nine9s', sasl]},
 		{sys_config, "./config/sys.config"},
@@ -38,17 +33,13 @@ $ rebar3 new release nine9s
 		{extended_start_script, true}
 	]
 }.
+```
+
 你可能想知道这个“nine9s”应用将会做些什么？我的想法是先让这个应用做成一个hello world的web服务，然后再热更新它的代码。修改你的nine9s_app.erl文件以便让start/2看起来像下面一样：
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
+你可能想知道这个“nine9s”应用将会做些什么？我的想法是先让这个应用做成一个hello world的web服务，然后再热更新它的代码。修改你的nine9s_app.erl文件以便让start/2看起来像下面一样：
+
+```erlang
 start(_StartType, _StartArgs) ->
  Dispatch = cowboy_router:compile(
                                   [{‘_’, [
@@ -58,15 +49,13 @@ start(_StartType, _StartArgs) ->
  {ok, _} = cowboy:start_http(http, 10, [{port, 9090}],
  [{env, [{dispatch, Dispatch}]}]),
  ‘nine9s_sup’:start_link().
+```
+
 现在我们创建一个模块，它叫做default_handler.erl。
 
-1
-2
-3
-4
-5
-6
-7
+现在我们创建一个模块，它叫做default_handler.erl。
+
+```erlang
 -module(default_handler).
 -export([init/2]).
 init(Req, Opts) ->
@@ -74,12 +63,19 @@ init(Req, Opts) ->
                                     <<”text/plain”>>} ],
                             <<”Hello world!”>>, Req),
     {ok, Req2, Opts}.
+```
+
 接下来，我们编译并运行这个应用。
 
-1
-2
+接下来，我们编译并运行这个应用。
+
+```shell
 $ rebar3 compile && rebar3 release
 $ _build/default/rel/nine9s/bin/nine9s-0.1.0 console
+```
+
+现在你已经运行了你的应用，你可以浏览http://localhost:9090来验证一下。请保持这个应用一直运行，因为我们将创建这个应用的一个新版本并且尝试在线进行代码热更新。
+
 现在你已经运行了你的应用，你可以浏览http://localhost:9090来验证一下。请保持这个应用一直运行，因为我们将创建这个应用的一个新版本并且尝试在线进行代码热更新。
 
 上述代码在项目的0.1.0分支里。
@@ -88,50 +84,7 @@ $ _build/default/rel/nine9s/bin/nine9s-0.1.0 console
 
 我们想统计我们的default_handler已经响应的请求数。这个很好解决，我们创建一个模块state_handler.erl，它是一个gen_server，它将存储default_handler.erl被调用的次数。
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
+```erlang
 -module(state_handler).
 -behaviour(gen_server).
 %% API functions
@@ -176,16 +129,13 @@ terminate(_Reason, _State) ->
     ok.
 code_change(_OldVsn, State, _Extra) ->
     {ok, State}.
+```
+
 我们修改我们的default_handler.erl，以便每次它接收到请求的时候就通知state_handler。
 
-1
-2
-3
-4
-5
-6
-7
-8
+我们修改我们的default_handler.erl，以便每次它接收到请求的时候就通知state_handler。
+
+```erlang
 -module(default_handler).
 -export([init/2]).
 init(Req, Opts) ->
@@ -194,19 +144,13 @@ init(Req, Opts) ->
                                  <<”text/plain”>>} ],
                          <<”Hello world 2 !”>>, Req),
     {ok, Req2, Opts}.
+```
+
 我们的state_handler将是nine9s_sup监督者下的一个工作进程。
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+我们的state_handler将是nine9s_sup监督者下的一个工作进程。
+
+
 -module(‘nine9s_sup’).
 -behaviour(supervisor).
 -export([start_link/0]).

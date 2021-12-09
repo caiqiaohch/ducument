@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "G:\\share\\shop-server\\game",
+            "folder_exclude_patterns": ["G:\\share\\shop-server\\game\\_build"]
+		}
+	]
+}

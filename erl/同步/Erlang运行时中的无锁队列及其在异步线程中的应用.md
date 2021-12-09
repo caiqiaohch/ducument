@@ -51,7 +51,7 @@
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
-```
+```erlang
  1 while (1) {
  2     if (this->next != NULL) {
  3         ilast = tail
